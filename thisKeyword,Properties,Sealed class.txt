@@ -1,0 +1,303 @@
+namespace _16.ThisKeyword
+{
+    class Student
+    {
+        int rno=345;
+        string name, dept;
+       
+
+        public Student()
+        {
+            //rno = 100;
+            name = "Geetha";
+            dept = "MBA";
+        }
+
+        public Student(int rno, string name, string dept)
+        {
+            this.rno = rno;
+            this.name = name;
+            this.dept = dept;
+        }
+        public void Display()
+        {
+            Console.WriteLine("Student Details");
+            Console.WriteLine("RollNo:" + rno.ToString());
+            Console.WriteLine("Name:" + name);
+            Console.WriteLine("Dept:" + dept);
+        }
+    }
+
+    class simple
+    {
+       int x;
+        public  void add(int x)
+        {
+            this.x = x;
+            this.x += 10;
+            Console.WriteLine("Local variable X= " + x);
+            Console.WriteLine(" This . x" +this.x);          
+        }
+        public void display()
+        {    x = x + 10;
+            Console.WriteLine("Global x="+x);
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            simple ob = new simple();
+            ob.add(23);
+            ob.display();
+            Student obj1 = new Student();
+            obj1.Display();
+            Console.WriteLine();
+            Student obj2 = new Student(18, "Gowtham Krishna", "BTech IT");
+            obj2.Display();
+            Console.ReadKey();
+        }
+    }
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+properties :
+==========
+class Employee
+    {
+        private int empid;
+        private string empname;
+        private double salary;
+
+        public int Empid
+        {
+            get { return empid; }
+            set { empid = value; }
+        }
+        public string Empname
+        {
+            get { return empname; }
+            set { empname = value; }
+
+        }
+        public double Salary
+        {
+           set { salary = value; }
+        }
+    }
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    class Display
+	{
+       // Employee obj = new Employee();
+        public Employee  setEmployeeDetail(Employee obj)
+        {         
+            obj.Empid = 101;
+            obj.Empname = "Muthu";
+            obj.Salary = 230000;
+            return obj;
+        }
+       /* public Employee  printDetail(Employee obj)
+        {
+            Console.WriteLine(" Employee Id" + obj.Empid);
+            Console.WriteLine(" Employee Name" + obj.Empname);
+            //Console.WriteLine(" Employee Name" + obj.Salary );
+            return obj;
+        }*/
+    }
+}
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+ static void Main(string[] args)
+        {
+            Employee obj = new Employee();
+            Display obj1 = new Display();
+            obj1.setEmployeeDetail(obj );
+            //obj1.printDetail(obj);
+            Console.WriteLine("employee Id "+obj.Empid);
+            Console.WriteLine("employee Name " + obj.Empname);
+           //Console.WriteLine(" Employee Salary " + obj.Salary);
+            Console.ReadKey();
+
+        }
+====================================================================
+Sealed class :
+----------------------
+  sealed class SampleClass
+    {
+        public void SampleMethod()
+        {
+            Console.WriteLine("SampleClass Method Definition");
+        }
+        public int MinimumCheck(int a, int b, int c)
+        {
+            int min;
+            if (a < b)
+            {
+                if (a < c)
+                {
+                    min = a;
+                }
+                else
+                    min = c;
+            }
+            else
+                if (b < c)
+                    min = b;
+                else
+                    min = c;
+
+            return min;
+        }
+    }
+
+ //   class DemoClass : SampleClass //--Cannot inherit the sealed Class
+ //  {
+ // }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            SampleClass sobj = new SampleClass();
+            sobj.SampleMethod();
+            Console.WriteLine(sobj.MinimumCheck(10,20,30));
+            Console.WriteLine(sobj.MinimumCheck(90,90,96));
+            Console.WriteLine(sobj.MinimumCheck(92,93,90));
+            Console.ReadKey();
+        }
+    }
+}
+===========================================================
+Indexers:
+--------------
+An indexer allows an object to be indexed like an array.
+
+Syntax
+A one dimensional indexer has the following syntax:
+
+element-type this[int index] 
+{
+   // The get accessor.
+   get 
+   {
+      // return the value specified by index 
+   }
+
+   // The set accessor.
+   set 
+   {
+      // set the value specified by index 
+   }
+}
+
+Declaration of behavior of an indexer is to some extent similar to a property. Like properties, you use get and set accessors for defining an indexer. However, properties return or set a specific data member, whereas indexers returns or sets a particular value from the object instance. In other words, it breaks the instance data into smaller parts and indexes each part, gets or sets each part.
+
+Defining a property involves providing a property name. Indexers are not defined with names, but with the this keyword, which refers to the object instance.
+
+Indexer Concept is object act as an array.
+Indexer an object to be indexed in the same way as an array.
+Indexer modifier can be private, public, protected or internal.
+The return type can be any valid C# types.
+Indexers in C# must have at least one parameter. Else the compiler will generate a compilation error.
+
+
+using System;
+namespace IndexerApplication
+{
+   class IndexedNames
+   {
+      private string[] namelist = new string[size];
+      static public int size = 10;
+      public IndexedNames()
+      {
+         for (int i = 0; i < size; i++)
+         namelist[i] = "N. A.";
+      }
+      public string this[int index]
+      {
+         get
+         {
+            string tmp;
+
+            if( index >= 0 && index <= size-1 )
+            {
+               tmp = namelist[index];
+            }
+            else
+            {
+               tmp = "";
+            }
+
+            return ( tmp );
+         }
+         set
+         {
+            if( index >= 0 && index <= size-1 )
+            {
+               namelist[index] = value;
+            }
+         }
+      }
+
+      static void Main(string[] args)
+      {
+         IndexedNames names = new IndexedNames();
+         names[0] = "Gem";
+         names[1] = "Pearl";
+         names[2] = "Ruby";
+         names[3] = "diamond";
+         names[4] = "sandal";
+         names[5] = "Muthu";
+         names[6] = "Rubic";
+         for ( int i = 0; i < IndexedNames.size; i++ )
+         {
+            Console.WriteLine(names[i]);
+         }
+         Console.ReadKey();
+      }
+   }
+}
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+namespace Indexers
+{
+    class ParentClass
+    {
+        private string[] range = new string[5];
+        public string this[int indexrange]
+        {
+            get
+            {
+                return range[indexrange];
+            }
+            set
+            {
+                range[indexrange] = value;
+            }
+        }
+    }
+ 
+    /* The Above Class just act as array declaration using this pointer */
+ 
+    class childclass
+    {
+        public static void Main()
+        {
+            ParentClass obj = new ParentClass();
+ 
+            /* The Above Class ParentClass  create one object name is obj */
+ 
+            obj[0] = "ONE";
+            obj[1] = "TWO";
+            obj[2] = "THREE";
+            obj[3] = "FOUR ";
+            obj[4] = "FIVE";
+            Console.WriteLine("WELCOME TO C# CORNER HOME PAGE\n");
+            Console.WriteLine("\n");
+ 
+            Console.WriteLine("{0}\n,{1}\n,{2}\n,{3}\n,{4}\n", obj[0], obj[1], obj[2], obj[3], obj[4]);
+            Console.WriteLine("\n");
+            Console.WriteLine("\n");
+            Console.ReadLine();
+        }
+    }
+}

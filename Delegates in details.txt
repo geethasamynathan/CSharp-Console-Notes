@@ -1,0 +1,194 @@
+Simple Example for Delegates :
+---------------------------------------------------
+public delegate void Delegateexample();
+ public class Sample
+    {
+
+        public void method1()
+        {
+            Console.WriteLine("You r in method1");
+        }
+
+        public void method2()
+
+        {
+            Console.WriteLine("You r in method2");
+        }
+
+        public void method3()
+
+        {
+            Console.WriteLine("You r in method3");
+        }
+
+    }
+
+
+
+    class Program
+
+    {
+        static void Main(string[] args)
+
+        {
+
+             Sample sample = new Sample();
+
+             Console.WriteLine("Single Delegate");
+
+             Delegateexample obj_dgt = new Delegateexample(s.method1);
+		
+             Console.WriteLine("Multicast Delegate");
+
+             obj_dgt += new Delegateexample(s.method2);
+
+             obj_dgt += new Delegateexample(s.method3);
+
+             obj_dgt.Invoke();
+		obj_dgt();
+
+
+
+             Console.WriteLine("Delegate");
+
+             obj_dgt -= new Delegateexample(s.methode3);
+
+             obj_dgt.Invoke();
+
+       
+
+        }
+
+    }
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+Anonymous Method using Delegate:
+================================
+
+public delegate void Print(int value);
+
+static void Main(string[] args)
+{
+    Print print = delegate(int val) { 
+        Console.WriteLine("Inside Anonymous method. Value: {0}", val); 
+    };
+
+    print(100);
+}
+
+
+
+
+Differences between Normal and Delegate Metohd:
+======================================
+
+Delegate is different from normal method.Delegate is a type which holds method reference in an object.It is also called as type safe function pointer.It is similar to C++ pointer.But the difference is c++ pointers are not type safe.It can point to any type of method.but delegate is type safe.we cannot point int type delegate to a string type. 
+A delegate should have the same signature and same number of parameters as that of a method to encapsulate the method or to create a reference for that method. 
+
+public delegate int Delegate_Sum(int a,int b); //This is a delegate which refers to the method "Sum".Observe that the delagate has same signature and same number of parameters as that of method.
+
+class Class1
+
+{
+
+    static int Sum(int val1,int val2)
+
+    {
+
+        return val1+val2;
+
+    }
+
+    static void Main(string[] args)
+
+    {
+
+       Delegate_Sum delObj = new Delegate_Sum(Sum); //Creating a delegate instance and passing the parameter as Method Name
+
+        Console.Write("Please Enter Values");
+
+        int v1 = Int32.Parse(Console.ReadLine());
+
+        int v2 = Int32.Parse(Console.ReadLine());
+
+        //use a delegate for processing
+
+        int res = delObj(v1,v2); //After this, we are accepting the two values from the user and passing those values to the delegate as we do using method.Here delegate object encapsulates the method functionalities and returns the result.
+
+        Console.WriteLine ("Result :"+res);
+
+        Console.ReadLine();
+
+    }
+
+}
+
+Some of the advantages of Delagates are:- 
+1.It encapsulates the method call 
+2.It increases the performance of the application 
+3.We can call a method Asynchronously using a delegate.We have multicast delegates as well... 
+--------------------------------------------------------------------------------------------------------
+
+
+  public  class Employee
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Experience { get; set; }
+        public int Salary { get; set; }
+       
+    }
+
+public delegate bool EligibletoPromote(Employee employee);
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<Employee> employees = new List<Employee>();
+            Employee emp1 = new Employee() { Id = 1, Name = "Hardik", Experience = 5, Salary = 10000 };
+            Employee emp2 = new Employee() { Id = 2, Name = "Jey", Experience = 12, Salary = 19000 };
+            Employee emp3 = new Employee() { Id = 3, Name = "Swetha", Experience = 7, Salary = 12000 };
+            employees.Add(emp1);
+            employees.Add(emp2);
+            employees.Add(emp3);
+            Program program = new Program();
+            EligibletoPromote eligibletoPromote = new EligibletoPromote(program.Promote);
+            Console.WriteLine(" Promoted Employees are" );
+            foreach (Employee emp in employees)
+            {
+               if(eligibletoPromote(emp))
+                    Console.WriteLine($"{emp.Name}");
+                //Console.WriteLine($"{emp.Name} is Promoted : {eligibletoPromote.Invoke(emp)}") ;
+            }
+               Console.ReadLine();
+        }
+        public  bool Promote(Employee emp)
+        {
+                if (emp.Experience >= 7)
+                    return true;
+                else
+                    return false;            
+        }
+    }
+===============================================================================================
+Generic Delegates:
+------------------
+Func Delegate ==> takes upto 16 input parameters  and return one value
+Action Delegate ==> takes upto 16 input parameters  and does not return  value
+Predicate Delegate ==> takes upto 1 input parameter  and return boolean  value
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

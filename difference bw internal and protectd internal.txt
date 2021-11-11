@@ -1,0 +1,24 @@
+using System;
+namespace assembly1
+{
+    class Class1
+    {
+        private int x = 2;
+        public void firstMethod()
+        {
+            Console.WriteLine(x);
+        }
+        protected static void SecondMethod() { }
+        protected internal class NestedClass { }
+    }
+    internal class Class2
+    {
+        private void ThirdMethod()
+        {
+            Class1 obj1 = new Class1();
+            Console.WriteLine(obj1.x); // Error, Class1.x is private, not accessible outside class
+            Class1.NestedClass nc; // fine, Class1.NestedClass is internal, accessible from within assembly
+            obj1.SecondMethod(); // Error, Class1.SecondMethod() is protected, it can be accessible if Class2 derives from Class1
+        }
+    }
+}

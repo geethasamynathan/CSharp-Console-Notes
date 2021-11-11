@@ -1,0 +1,500 @@
+Function:
+--------------
+set of instruction is known as function.
+whenever you need to put all related information into the block is called  function.
+
+syntax :
+======
+
+access_specifier return_type name(argument or parameter list )
+{
+statement;
+}
+
+Generally we are classified the function into 4 types:
+=============================================
+
+function without return without argument:
+----------------------------------------------------------------------
+//user-defined function declaration and definition
+       static  void addition()
+        {
+            int x, y, res;
+            Console.WriteLine(" Enter the value for x and y");
+            x = Convert.ToInt32(Console.ReadLine());
+            y = Convert.ToInt32(Console.ReadLine());
+            res = x + y;
+            Console.WriteLine(" X+ y = " + res);
+        }
+        static void Main()
+        {
+            addition();
+
+        }
+========================================================================
+function with return without arguments:
+----------------------------------------------------------------------
+
+    class function_Demo1
+    {//user-defined function declaration and definition
+       static  int addition()
+        {
+            int  x, y ,res;
+            Console.WriteLine(" Enter the value for a and b");
+            x = Convert.ToInt32(Console.ReadLine());
+            y = Convert.ToInt32(Console.ReadLine());
+            res = x + y;
+            return res;
+        }
+        static void Main()
+        {
+            Console.WriteLine(" given values summation are " + addition());
+           int result= addition();
+           Console.WriteLine(" given vales summation are " + result);
+             Console.ReadLine();
+
+        }
+    }
+========================================================================
+function without return with arguments:
+------------------------------------------------------------------------
+ class function_Demo1
+    {//user-defined function declaration and definition
+       static  void addition(int x, int y)
+        {
+            int  res;          
+            res = x + y;
+            Console.WriteLine(" X+ y = " + res);
+        }
+        static void Main() //calling function
+        {
+            addition(34,89); //called function 
+            //another method to call the function -Addition
+            int a, b;
+            Console.WriteLine(" Enter the value for a and b");
+            a = Convert.ToInt32(Console.ReadLine());
+            b = Convert.ToInt32(Console.ReadLine());
+            addition(a, b);
+            Console.ReadLine();
+
+        }
+    }
+}
+
+=========================================================================
+function with return with arguments:
+----------------------------------------------------------------
+ class function_Demo1
+    {//user-defined function declaration and definition
+       static  int addition(int x, int y )
+        {
+            int  res;          
+            res = x + y;
+            return res;
+        }
+        static void Main()
+       {
+           int x, y;
+           Console.WriteLine(" Enter the value for a and b");
+           x = Convert.ToInt32(Console.ReadLine());
+           y = Convert.ToInt32(Console.ReadLine());
+                      int result=  addition(x,y);
+           Console.WriteLine(" given vales summation are " + result);
+             Console.ReadLine();
+
+        }
+    }
+}
+
+==========================================================================
+example for call by value and reference:
+-------------------------------------------------------------------
+  static void Main(string[] args)
+        {
+            int a, b;
+            a = 10;
+            b = 10;
+            Console.WriteLine("\nCalling By Value Demonstration:\n\n");
+            Console.WriteLine("Value of A in Main Before Calling: " + a);
+            MethodValue(a);
+            Console.WriteLine("Value of A in Main After Calling: " + a);
+
+            Console.WriteLine("\n\n\nCalling By Reference Demonstration:\n\n");
+            Console.WriteLine("Value of B in Main Before Calling: " + b);
+            MethodReference(ref b);
+            Console.WriteLine("Value of B in Main After Calling: " + b);
+
+            Console.ReadKey();
+        }
+
+        public static void MethodValue(int a)
+        {
+            a = a + 10;
+            Console.WriteLine("Value of A in  MathodValue : " + a);
+        }
+        public static void MethodReference(ref int z)
+        {
+            z = z + 10;
+            Console.WriteLine("Value of B in MethodReference : " + z);
+        }
+    }
+}
+==========================================================================
+// out keyword 
+
+         static void Calculate(int a, int b, out int sum,out int diff,out int multiply)
+        {
+            sum = a + b;
+            diff = a - b;
+            multiply = a * b;
+        }
+       
+        static void Main(string[] args)
+        {
+		
+           Calculate(100,40,out  int sum1, out int diff,out  int multpiy);
+            Console.WriteLine($"sum = {sum} \n difference = {diff} \n Multiplication = {multpiy}");
+             Console.ReadLine();
+        }
+==============================================================================================
+   //out keyword with discard
+        static void Addition(int a, int b , out int sum, out int diff, out int Multiply)
+        {
+            sum = a + b;
+            diff = a - b;
+            Multiply = a * b;
+        }
+        static void Main(string[] args)
+        {
+            Addition(100, 23, out int sum, out _, out _);
+            Console.WriteLine($"Sum = {sum} \n Difference= {diff}");;
+            Console.ReadLine();
+        }
+    }
+
+
+
+======================================================================================
+//optional Parameter with default value
+-----------------------------------------
+        static  void GetEmployeeDetail(int id, string name ,string loation="Hyderabad",int salary=35000)
+
+        {
+            Console.WriteLine(" Employee Details are" );
+            Console.WriteLine($"Id= {id} \n Name = {name}");
+            Console.WriteLine($" Location = {loation} \n salary={salary}");
+        }
+        static void Main(string[] args)
+        {
+            GetEmployeeDetail(101, "Geetha","Coimbatore");
+	    GetEmployeeDetail( 102,"Geetha");
+	    GetEmployeeDetail(103,"Fransy","Pune",78000)
+            Console.ReadLine();
+        }
+
+===========================================================================================
+ //optional Parameter  with [Optinal] attribute without default value
+----------------------------------------------------------------------
+
+using System.Runtime.InteropServices;
+
+
+ class Program
+    {
+       
+        /// <summary>
+        /// whenever you want to make parameter should be optional and no default for optinal parameter that time 
+        /// we can use [Optional] attribute which from using System.Runtime.InteropSevices namespace
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
+        /// <param name="salary"></param>
+        /// <param name="location"></param>
+        static  void GetEmployeeDetail(int id, string name , int salary,[Optional]string location)
+        {
+            Console.WriteLine(" Employee Details are" );
+            Console.WriteLine($"Id= {id} \n Name = {name}");
+            Console.WriteLine($" Location = {location} \n salary={salary}");
+        }
+        static void Main(string[] args)
+        {
+            GetEmployeeDetail(101, "Geetha", 2355);
+            GetEmployeeDetail(102, "Fransy", 64467, "Comibatore");
+            Console.ReadLine();
+        }
+    }
+
+=======================================================================================================
+//Named parameter
+--------------------
+ class Program
+    {
+        static  void GetEmployeeDetail(int id, string name , int salary,string location)
+        {
+            Console.WriteLine(" Employee Details are" );
+            Console.WriteLine($"Id= {id} \n Name = {name}");
+            Console.WriteLine($" Location = {location} \n salary={salary}");
+        }
+        static void Main(string[] args)
+        {
+          
+            GetEmployeeDetail(102, "Fransy", 644, "Comibatore");
+            GetEmployeeDetail(name : "Lalitha", id : 101, location : "Chennai", salary:5545);
+            Console.ReadLine();
+        }
+    }
+======================================================================================================
+out parameter:
+-----------------------
+
+namespace Day3
+{
+    class OutDemo
+    {
+        static void Addition(int a, int b, out int sum, out int diff, out int Multiply)
+        {
+            sum = a + b;
+            diff = a - b;
+            Multiply = a * b;
+        }
+        static void Main(string[] args)
+        {
+            Addition(100, 23, out int sum, out _, out _);
+            Addition(100, 78, out int sum1, out int diff, out _);
+         
+            Console.WriteLine($"Sum = {sum}" );
+            Console.WriteLine($"Sum1 = {sum1} \n diff = {diff}");
+            Console.WriteLine(" Enter 2 integer values");
+            int num1, num2;
+            num1 = int.Parse(Console.ReadLine());
+            num2 = int.Parse(Console.ReadLine());
+            Addition(num1,num2, out int sum2, out int diff2, out int multiply2);
+            Console.WriteLine($" Sum ={sum2} \n Difference = {diff2} \n Multiplication = {multiply2}" );
+            Console.ReadLine();
+        }
+        /*
+        static int  calculation(int a, int b , out int sum1,out int diff1)
+        {
+            sum1 = a + b;
+            diff1 = a - b;
+            int multiply = a * b;
+            return multiply;
+        }
+        static void Main(string[] args)
+        {
+           int multplyresult= calculation(12, 34, out int sum, out int diff);
+            Console.WriteLine($"sum={sum} \n Difference ={diff}");
+            Console.WriteLine("Multiplication Result =" +multplyresult);
+            Console.ReadLine();
+        }
+        */
+    }
+}
+
+
+
+
+=================================================================================================
+ class Out_Param1
+    {
+        static void TestString(string value, out bool period, out bool comma, out bool semicolon)
+        {
+            period = comma = semicolon = false; // Assign all out parameters to false
+
+            for (int i = 0; i < value.Length; i++)
+            {
+                switch (value[i])
+                {
+                    case '.':
+                        {
+                            period = true; // Set out parameter
+                            break;
+                        }
+                    case ',':
+                        {
+                            comma = true; // Set out parameter
+                            break;
+                        }
+                    case ';':
+                        {
+                            semicolon = true; // Set out parameter
+                            break;
+                        }
+                }
+            }
+        }
+        static void Main()
+        {
+            bool period; // Used as out parameter
+            bool comma;
+            bool semicolon;
+            const string value = "has period, comma."; // Used as input string
+
+            TestString(value, out period, out comma, out semicolon);
+
+            Console.WriteLine(value); // Display value
+            Console.Write("period: "); // Display labels and bools
+            Console.WriteLine(period);
+            Console.Write("comma: ");
+            Console.WriteLine(comma);
+            Console.Write("semicolon: ");
+            Console.WriteLine(semicolon);
+            Console.ReadKey();
+        }
+    }
+}
+
+================================================================
+Params :
+-------------
+ /*
+  * One can create a method that displays any number of integers 
+  * to the console by passing in an array of integers and then iterating over 
+  * the array with a foreach loop. The params keyword allows you to pass in a 
+  * variable number of parameters without necessarily explicitly creating the array.
+  
+  
+     * Advantages of using Param Array:
+    Sometimes, you are not assured about number of parameters or you want to 
+     create a method that can accept n number of parameters at run time. 
+     This situation can be handled with params type array in C#. The params keyword
+     creates an array at run time that receives and holds n number of parameters.
+  
+      The calling method, however, need not explicitly create an array:
+     it can simply pass in integers, and the compiler will assemble the 
+      parameters into an array for the DisplayVals( ) method:
+     * 
+     */
+    class Param_Sample
+    {
+        static void Main()
+        {
+            //
+            // Call params method with one to four integer constant parameters.
+            //
+           Console.WriteLine(SumParameters(1));
+           Console.WriteLine(SumParameters(1, 2));
+           Console.WriteLine(SumParameters(3, 3, 3));
+           Console.WriteLine(SumParameters(2, 2, 2, 2));
+          
+            Console.ReadKey();
+        }
+	
+        static int SumParameters(params int[] values)
+        {
+            int total = 0;
+            foreach (int value in values)
+            {
+                total += value;
+            }
+            return total;
+        }
+    }
+}
+=================================================================
+static function:
+============
+static function can access only the static variable which is from outside of the function.
+
+static function can call only other static function.
+
+but within the static function we can declare static and non-static variables.
+
+main use of static function is  no need of creating an object to access the static variable and function.
+=====================================================================
+
+non-static function :
+===============
+non-static function can access  the static and non-static  variable
+non-static function can call  other static  and non-static function.
+once we declared non-static function we need to declare the object to access non-static function which is present in other classes
+
+
+===========================================================
+example for static and non-static function and variables:
+---------------------------------------------------------------------------------------------
+  class static_Demo
+    {
+       static int x;
+       int y;
+       void fun1()
+       {
+           Console.WriteLine(" fun1");
+       }
+       static void fun2()
+       {
+           Console.WriteLine("Fun2");
+       }           
+            
+            static void Main()
+        {
+            x = 34;
+            static_Demo obj = new static_Demo();
+            obj.y = 353;
+            Console.WriteLine(" x=  {0} \n y={1}", x, obj.y);
+                //calling non-statioc function using object
+            obj.fun1();
+                //calling static function without an object
+
+            fun2();
+            Console.ReadLine();
+
+        }
+    }
+}
+
+==================================================================================================
+ //Non-static function and access it main Function     
+          void GetEmployeeDetail(int id, string name , int salary,string location)
+        {
+            Console.WriteLine(" Employee Details are" );
+            Console.WriteLine($"Id= {id} \n Name = {name}");
+            Console.WriteLine($" Location = {location} \n salary={salary}");
+        }
+       static  void Main(string[] args)
+        {
+            Program program = new Program();       
+           program.GetEmployeeDetail(102, "Fransy", 644, "Comibatore");
+           program. GetEmployeeDetail(name : "Lalitha", id : 101, location : "Chennai", salary:5545);
+            Console.ReadLine();
+        }
+====================================================================================================
+Static class:
+==============
+Static class can contain all members as static. We dont want to create an object to access static class function. through the class name itself we can access all the function and variables.
+
+Example:
+--------
+static class Employee
+    {
+       static  int id;
+      static string name;
+        //int eid; //error as it is on-static variable
+        //string ename;
+        //public void GetEmployeeDetail()
+        //{
+        //    Console.WriteLine(" Enter the Employeeid and Name");
+        //    id = int.Parse(Console.ReadLine());
+        //    name = Console.ReadLine();
+
+        //}
+        public static void printEmployeeDetails()
+        {
+           // Employee emp = new Employee();
+            Console.WriteLine(" Employee details are \n ===========================\n");
+            //Console.WriteLine($"id=  {emp.eid} \n Name= {emp.ename}");
+            Console.WriteLine($"Id = {id} \n Name= {name}");
+        }
+    }
+
+    class static_non_static_demo
+    {
+        
+        static void Main(string[] args)
+        {
+            Employee.printEmployeeDetails(); 
+            Console.ReadLine();
+        }
+    }
+
+-----------------------------------------------------------------------------------------------------

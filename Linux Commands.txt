@@ -1,0 +1,88 @@
+Very important command check or view all the file and directory
+
+#ls
+
+# ls -l
+
+ 
+Manage Directory 
+
+1.Create Folder or Directory(mkdir) 
+   #mkdir /test
+   #mkdir -p /test1/sub1
+                                             test1-Parent Directory 
+                                             sub1- Sub or child directory 
+
+2. Present Working Directory(currently working Directory)
+   #pwd
+ 
+3.Change Directory (CD)
+   # cd /test1/sub1
+
+  #pwd 
+   /test1/sub1
+
+  # cd .. one step go back
+
+  # pwd
+  /test1
+
+  #cd ~
+
+change into home Directory 
+
+4.Copy Directory to Directory 
+
+# cp -rf /test3   /test4
+
+
+5.Rename Directory 
+
+#mv  linux  unix
+
+#mv unix /test1  (Cut & Paste)
+
+
+6.Remove Directory
+
+#rm -rf /test1   -remove only test1 dir 
+#rm -rf /test/*   - remove all directory under /test
+
+  
+ Manage File     
+
+1.Create  & view File 
+
+# cat>Linux     --> create simple file 
+
+welcome1 
+press ctrl 
+
+#cat linux     --> view or display the content of file 
+
+#cat>>linux   --> append add few more content on same file
+
+welcome 2
+
+#cat linux
+welcome 1
+welcome 2
+
+
+2.Remove or delete File
+
+#rm -f linux1  -remove only linux file
+
+#rm -f /test1/* remove all the file in /test1 directory  
+ 
+
+3.Copy file
+# cp linux2  /test1/unix/  -copy file into different location
+# cp linux1 linux2  -copy file into same location
+
+4. Move or Rename file 
+
+# mv linux 2 /lab (cut & paste)
+# mv linux3 unixfile
+
+

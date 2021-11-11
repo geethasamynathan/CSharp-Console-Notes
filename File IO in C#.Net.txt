@@ -1,0 +1,376 @@
+File IO in C#.Net :
+=============
+
+A file is a collection of data stored in a disk with a specific name and a directory path. 
+When a file is opened for reading or writing, it becomes a stream.
+
+The stream is basically the sequence of bytes passing through the communication path. 
+There are two main streams: the input stream and the output stream.
+ The input stream is used for reading data from file (read operation) and 
+the output stream is used for writing into the file (write operation).
+
+C# I/O Classes
+The System.IO namespace has various class that are used for performing various operation with files, like creating and deleting files, reading from or writing to a file, closing a file etc.
+
+
+class Program
+    {
+  static void Main(string[] args)
+        {
+ 	string path = "G:\\IBM\\test.txt";
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
+            using (FileStream fs = File.Create(path))
+            {
+                AddTextintheFile(fs, "Hello");
+                AddTextintheFile(fs, "Welcome to .NET Training");
+                AddTextintheFile(fs, "\r\n sample text for Filestream");
+               
+            }
+            using(FileStream fs =File.OpenRead(path))
+            {
+                byte[] b = new byte[1024];
+                UTF8Encoding encode = new UTF8Encoding(true);
+                fs.Read(b, 0, b.Length);
+                Console.WriteLine(encode.GetString(b));
+
+            }
+            Console.ReadLine();
+        }
+        public static void AddTextintheFile(FileStream fs, string input)
+        {
+            byte[] byteinfo = new UTF8Encoding(true).GetBytes(input);
+            fs.Write(byteinfo, 0, byteinfo.Length);
+        }
+=================================================================================
+
+//Directory Info
+===================
+
+ class Program
+
+    {
+
+        static void Main(string[] args)
+        {
+            //Specify the directory which we want to manipulate
+            string sourcedir = @"D:\SampleSource";
+            string targetdir = @"D:\SampleDestination";
+
+            DirectoryInfo sdi = new DirectoryInfo(sourcedir);
+            DirectoryInfo tdi = new DirectoryInfo(targetdir);
+            // Check if target directory exists, if not, create it
+
+            if (!tdi.Exists)
+            {
+                tdi.Create();
+            }
+
+            // Copy each file into it's new directory.
+
+            foreach (FileInfo fi in sdi.GetFiles())
+            {
+                fi.CopyTo(Path.Combine(tdi.ToString(), fi.Name), true);
+                Console.WriteLine(@"Copying {0}\{1}", tdi.FullName, fi.Name);
+            } 
+
+            // Copy each subdirectory and it's files
+
+            foreach (DirectoryInfo sourceSubDir in sdi.GetDirectories())
+            {
+                DirectoryInfo targetSubDir =tdi.CreateSubdirectory(sourceSubDir.Name);
+
+                // Copy each file into it's new directory.
+                foreach (FileInfo fi in sourceSubDir.GetFiles())
+                {
+                    fi.CopyTo(Path.Combine(targetSubDir.ToString(), fi.Name), true);
+                    Console.WriteLine(@"Copying {0}\{1}", targetSubDir.FullName, fi.Name);
+                }
+
+            }
+
+ 
+
+            Console.ReadLine();
+
+        }
+
+    }
+
+}
+
+=========================================================================================
+FileStream demo:
+-----------------
+using System;  
+using System.IO;  
+public class FileStreamExample  
+{  
+    public static void Main(string[] args)  
+    {  
+        FileStream f = new FileStream("e:\\b.txt", FileMode.OpenOrCreate);//creating file stream  
+        f.WriteByte(65);//writing byte into stream  
+        f.Close();//closing stream  
+    }  
+}  
+
+=====================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   class Program
+    {
+        static void Main(string[] args)
+        {
+            int choice, flag;
+
+           do
+            {
+                Console.WriteLine("------------------------------------");
+                Console.WriteLine("   File Handling Operations   ");
+                Console.WriteLine("------------------------------------");
+                Console.WriteLine("\t 1. Create");
+                Console.WriteLine("\t 2. Write");
+                Console.WriteLine("\t 3. Append");
+                Console.WriteLine("\t 4. Delete");
+                Console.Write("\nChoose Your Option:\t");
+                choice = int.Parse(Console.ReadLine());
+
+                switch (choice)
+                {
+                    case 1:
+                        File.Create(@"D:\sample.txt");
+                        break;
+                    case 2:
+                        string cont;
+                        Console.WriteLine("Enter the contents to write: ");
+                        cont = Console.ReadLine();
+                        File.WriteAllText(@"D:\sample.txt", cont);
+                        Console.WriteLine("\nFile Contents: ");
+                        Console.WriteLine(File.ReadAllText(@"D:\sample.txt"));
+                        break;
+                    case 3:
+                        Console.WriteLine("Enter the contents to append: ");
+                        cont = Console.ReadLine();
+                        File.AppendAllText(@"D:\sample.txt", cont);
+                        Console.WriteLine("\nFile Contents: ");
+                        Console.WriteLine(File.ReadAllText(@"D:\sample.txt"));
+                        break;
+                    case 4:
+                        File.Delete(@"D:\sample.txt");
+                        break;
+                    default:
+                        Console.WriteLine("Choose the correct option: ");
+                        break;
+                }
+                Console.Write("Enter 0 to Continue: ");
+                flag = int.Parse(Console.ReadLine());
+            
+           
+         } while (flag == 0);
+   
+            Console.ReadKey();
+        }
+    }
+================================================================
+ class two
+    {
+        static void Main()
+        {
+            string[] x = new string[] { "Thamarai", "Subbulakshmi", "Beena", "we" };
+            File.WriteAllLines(@"D:\one.txt", x);
+            File.AppendAllLines(@"D:\sample.txt",x);
+            File.WriteAllText(@"D:\sa.txt", "Welcome to file concept");
+
+        }
+    }
+----------------------------------------------------------------------------------------------
+ FileStream
+==============
+
+C# FileStream class provides a stream for file operation. It can be used to perform synchronous and asynchronous read and write operations. By the help of FileStream class, we can easily read and write data into file.
+
+C# FileStream example: writing single byte into file
+Let's see the simple example of FileStream class to write single byte of data into file. Here, we are using OpenOrCreate file mode which can be used for read and write operations.
+
+using System;  
+using System.IO;  
+public class FileStreamExample  
+{  
+    public static void Main(string[] args)  
+    {  
+        FileStream f = new FileStream("e:\\b.txt", FileMode.OpenOrCreate);//creating file stream  
+        f.WriteByte(65);//writing byte into stream  
+        f.Close();//closing stream  
+    }  
+}  
+Output:
+
+A
+-----------------------------------------------------------
+C# FileStream example: writing multiple bytes into file
+Let's see another example to write multiple bytes of data into file using loop.
+
+using System;  
+using System.IO;  
+public class FileStreamExample  
+{  
+    public static void Main(string[] args)  
+    {  
+        FileStream f = new FileStream("e:\\b.txt", FileMode.OpenOrCreate);  
+        for (int i = 65; i <= 90; i++)  
+        {  
+            f.WriteByte((byte)i);  
+        }  
+        f.Close();  
+    }  
+}  
+Output:
+
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+-----------------------------------------------------------------------------------------------
+C# FileStream example: reading all bytes from file
+Let's see the example of FileStream class to read data from the file. Here, ReadByte() method of FileStream class returns single byte. To all read all the bytes, you need to use loop.
+
+using System;  
+using System.IO;  
+public class FileStreamExample  
+{  
+    public static void Main(string[] args)  
+    {  
+        FileStream f = new FileStream("e:\\b.txt", FileMode.OpenOrCreate);  
+        int i = 0;  
+        while ((i = f.ReadByte()) != -1)  
+        {  
+            Console.Write((char)i);  
+        }  
+        f.Close();  
+    }  
+}  
+Output:
+
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+=============================================================================================
+C# StreamReader
+C# StreamReader class is used to read string from the stream. It inherits TextReader class. It provides Read() and ReadLine() methods to read data from the stream.
+
+C# StreamReader example to read one line
+Let's see the simple example of StreamReader class that reads a single line of data from the file.
+
+using System;  
+using System.IO;  
+public class StreamReaderExample  
+{  
+    public static void Main(string[] args)  
+    {  
+        FileStream f = new FileStream("e:\\output.txt", FileMode.OpenOrCreate);  
+        StreamReader s = new StreamReader(f);  
+  
+        string line=s.ReadLine();  
+        Console.WriteLine(line);  
+  
+        s.Close();  
+        f.Close();  
+    }  
+}  
+Output:
+
+Hello C#
+C# StreamReader example to read all lines
+using System;  
+using System.IO;  
+public class StreamReaderExample  
+{  
+    public static void Main(string[] args)  
+    {  
+        FileStream f = new FileStream("e:\\a.txt", FileMode.OpenOrCreate);  
+        StreamReader s = new StreamReader(f);  
+  
+        string line = "";  
+        while ((line = s.ReadLine()) != null)  
+        {  
+            Console.WriteLine(line);  
+        }  
+        s.Close();  
+        f.Close();  
+    }  
+}  
+Output:
+
+Hello C#
+this is file handling
+===============================================================================================
+
+C# TextWriter
+C# TextWriter class is an abstract class. It is used to write text or sequential series of characters into file. It is found in System.IO namespace.
+
+C# TextWriter Example
+Let's see the simple example of TextWriter class to write two lines data.
+
+using System;  
+using System.IO;  
+namespace TextWriterExample  
+{  
+    class Program  
+    {  
+        static void Main(string[] args)  
+        {  
+            using (TextWriter writer = File.CreateText("e:\\f.txt"))  
+            {  
+                writer.WriteLine("Hello C#");  
+                writer.WriteLine("C# File Handling ");  
+            }  
+            Console.WriteLine("Data written successfully...");  
+        }  
+    }  
+}  
+Output:
+
+Data written successfully...
+f.txt:
+
+Hello C#
+C# File Handling
+===========================================================================================
+C# TextReader
+C# TextReader class is found in System.IO namespace. It represents a reader that can be used to read text or sequential series of characters.
+
+C# TextReader Example: Read All Data
+Let's see the simple example of TextReader class that reads data till the end of file.
+
+using System;  
+using System.IO;  
+namespace TextReaderExample  
+{  
+    class Program  
+    {  
+        static void Main(string[] args)  
+        {  
+            using (TextReader tr = File.OpenText("e:\\f.txt"))  
+            {  
+                Console.WriteLine(tr.ReadToEnd());  
+            }  
+        }  
+    }  
+}  
+Output:
+
+Hello C#
+C# File Handling 
+=========================================================================
+
+

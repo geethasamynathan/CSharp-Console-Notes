@@ -1,0 +1,41 @@
+What is Hashtable in C#?
+A hash table is a special collection that is used to store key-value items. So instead of storing just one value like the stack, array list and queue, the hash table stores 2 values. These 2 values form an element of the hash table.
+
+Below are some example of how values of a hash table might look like.
+
+{ "001" , ".Net" }
+{ "002" , ".C#" }
+{ "003" , "ASP.Net" }
+Above we have 3 key value pairs. The keys of each element are 001, 002 and 003 respectively. The values of each key value pair are ".Net", "C#" and "ASP.Net" respectively.
+
+ static void Main(string[] args)
+  {
+   Hashtable ht = new Hashtable();
+   ht.Add("001",".Net");
+   ht.Add("002","C#");
+   ht.Add("003","ASP.Net");
+
+   ICollection keys = ht.Keys;
+
+   foreach (String k in keys)
+   {
+    Console.WriteLine(ht[k]);
+   }
+    Console.ReadKey();
+   }
+
+Code Explanation:-
+
+First, we declare the hashtable variable using the Hashtable data type by using keyword "New." The name of the variable defines is 'ht'.
+We then add elements to the hash table using the Add method. Remember that we need to add both a key and value element when adding something to the hashtable.
+There is no direct way to display the elements of a hash table.
+In order to display the hashtable , we first need to get the list of keys (001, 002 and 003) from the hash table.
+This is done via the ICollection interface. This is a special data type which can be used to store the keys of a hashtable collections. We then assign the keys of the hashtable collection to the variable 'keys'.
+Next for each key value, we get the associated value in the hashtable by using the statement ht[k]
+
+
+
+
+Summary:
+
+A Hashtable is used to store elements which comprises of key values pairs. To access the value of an element , you need to know the key of the element.

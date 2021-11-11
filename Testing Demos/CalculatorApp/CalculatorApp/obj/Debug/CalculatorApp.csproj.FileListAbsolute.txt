@@ -1,0 +1,6 @@
+G:\C#.Net Notes Console\Testing Demos\CalculatorApp\CalculatorApp\bin\Debug\CalculatorApp.exe.config
+G:\C#.Net Notes Console\Testing Demos\CalculatorApp\CalculatorApp\bin\Debug\CalculatorApp.exe
+G:\C#.Net Notes Console\Testing Demos\CalculatorApp\CalculatorApp\bin\Debug\CalculatorApp.pdb
+G:\C#.Net Notes Console\Testing Demos\CalculatorApp\CalculatorApp\obj\Debug\CalculatorApp.csproj.CoreCompileInputs.cache
+G:\C#.Net Notes Console\Testing Demos\CalculatorApp\CalculatorApp\obj\Debug\CalculatorApp.exe
+G:\C#.Net Notes Console\Testing Demos\CalculatorApp\CalculatorApp\obj\Debug\CalculatorApp.pdb

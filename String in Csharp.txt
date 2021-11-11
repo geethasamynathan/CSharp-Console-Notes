@@ -1,0 +1,69 @@
+C# Strings
+In C#, string is an object of System.String class that represent sequence of characters. We can perform many operations on strings such as concatenation, comparision, getting substring, search, trim, replacement etc.
+
+string vs String
+In C#, string is keyword which is an alias for System.String class. That is why string and String are equivalent. We are free to use any naming convention.
+
+string s1 = "hello";//creating string using string keyword  
+String s2 = "welcome";//creating string using String class  
+C# String Example
+using System;  
+public class StringExample  
+{  
+    public static void Main(string[] args)  
+    {  
+        string s1 = "hello";  
+  
+        char[] ch = { 'c', 's', 'h', 'a', 'r', 'p' };  
+        string s2 = new string(ch);  
+         
+        Console.WriteLine(s1);  
+        Console.WriteLine(s2);  
+    }  
+}  
+Output:
+
+hello 
+csharp
+---------------------------------------------------------
+String Clone()
+===============
+The C# Clone() method is used to clone a string object. It returns another copy of same data. The return type of Clone() method is object.
+
+Signature
+public object Clone()  
+Parameters
+It does not take any parameter.
+
+Returns
+It returns a reference.
+
+C# String Clone () method example
+using System;    
+    public class StringExample    
+    {    
+        public static void Main(string[] args)    
+        {    
+             string s1 = "Hello ";    
+             string s2 = (String)s1.Clone();    
+             Console.WriteLine(s1);  
+             Console.WriteLine(s2);    
+        }    
+    }    
+Output:
+
+Hello
+Hello
+--------------------------------------------------------------------
+String Compare()
+====================
+The C# Compare() method is used to compare first string with second string lexicographically. It returns an integer value.
+
+If both strings are equal, it returns 0. If first string is greater than second string, it returns 1 else it returns -1.
+
+Rule
+s1==s2 returns 0  
+s1>s2 returns 1  
+s1<s2 returns -1  
+
+----------------------------------------------------------------

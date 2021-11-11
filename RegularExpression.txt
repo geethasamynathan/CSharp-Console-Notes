@@ -1,0 +1,21 @@
+Example for Regular -Expression for Mobile Number:
+---------------------------------------------------
+
+class Program
+    {
+        static void Main(string[] args)
+        {
+            Regex r = new Regex(@"^\+?\d{0,2}\-?\d{4,5}\-?\d{5,6}");
+            string[] str = new string[]
+            {
+               "+91-9500774477","91-9500-774477","1-95007-74477","9500774477",
+               "950077-4477"
+            };
+            foreach (var s in str)
+            {
+                Console.WriteLine(" {0}  -{1} valid Mobile Number", s,r.IsMatch(s)?"is" :"is not" );
+            }
+            Console.ReadLine();
+        }
+    }
+ =============================================================================================

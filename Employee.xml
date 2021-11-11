@@ -1,0 +1,20 @@
+<Employees>
+	<Employee>
+		<empid>101</empid>
+		<name>Shiyamala</name>
+		<desig>Trainee</desig>
+		<salary>56000</salary>
+	</Employee>
+	<Employee>
+		<empid>102</empid>
+		<name>Revathi</name>
+		<desig>HR</desig>
+		<salary>51000</salary>
+	</Employee>
+	<Employee>
+		<empid>103</empid>
+		<name>Shruthi</name>
+		<desig>Trainee</desig>
+		<salary>56000</salary>
+	</Employee>
+</Employees>

@@ -1,0 +1,329 @@
+ADO.NET :  Activex Database object
+
+EntityFramework
+---------------
+it is  used to connect .Net Application to any database such as MS-Sql,Oracle,MySQl,Ms-Access,MongoDb,....
+
+2 types of architecture in ADO.NET
+-------------------------------
+1.Connected Architecture ==> SqlDataReader
+2.Disconnected Architecture ==> SqlDataAdapter fill(), Dataset,Datatable,
+
+
+
+   class Program
+    {
+        public static void AddNewDepartment()
+        {
+            string dname, dlocation;
+            Console.WriteLine(" Enter the Department name");
+            dname = Console.ReadLine();
+            Console.WriteLine("Enter the Department Location");
+            dlocation = Console.ReadLine();
+            SqlConnection sqlConnection = new SqlConnection();
+            sqlConnection.ConnectionString = "server=GEETHA;database=IBM-Demos;Integrated Security=true;";
+            SqlCommand insertCommand = new SqlCommand();
+            insertCommand.Connection = sqlConnection;
+            insertCommand.CommandType = CommandType.StoredProcedure;
+            insertCommand.Parameters.AddWithValue("@name", dname);
+            insertCommand.Parameters.AddWithValue("@location", dlocation);
+            insertCommand.CommandText = "sp_insertDepartment";
+            sqlConnection.Open();
+            int rowcount = insertCommand.ExecuteNonQuery();
+            sqlConnection.Close();
+            if (rowcount > 0)
+            {
+                Console.WriteLine(" Record inserted Successfully");
+            }
+            else
+            {
+                Console.WriteLine(" Sorry! Something went wrong");
+            }
+        }
+        public static void updateDepartment()
+        {
+            string dname, dlocation;
+            int did;
+            bool record = false;
+            Console.WriteLine(" Enter the  Department id to update");
+            did = int.Parse(Console.ReadLine());
+            using (SqlConnection conn = new SqlConnection())
+            {
+                conn.ConnectionString = "server=GEETHA;database=IBM-Demos;Integrated Security=true;";
+                SqlCommand selectcmd = new SqlCommand();
+                selectcmd.Connection = conn;
+                selectcmd.CommandType = CommandType.StoredProcedure;
+                selectcmd.CommandText = "sp_GetAllDepartments";
+                conn.Open();
+               
+                SqlDataReader reader = selectcmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    if (reader[0].ToString() == did.ToString())
+                    {
+                        record = true;
+                        break;
+                    }
+
+                }
+                reader.Close();
+                conn.Close();
+            }
+            if (record == true)
+            {
+                Console.WriteLine(" Enter the Department name");
+                dname = Console.ReadLine();
+                Console.WriteLine("Enter the Department Location");
+                dlocation = Console.ReadLine();
+                using (SqlConnection sqlConnection = new SqlConnection())
+                {
+                    sqlConnection.ConnectionString = "server=GEETHA;database=IBM-Demos;Integrated Security=true;";
+                    SqlCommand insertCommand = new SqlCommand();
+                    insertCommand.Connection = sqlConnection;
+                    insertCommand.CommandType = CommandType.StoredProcedure;
+                    insertCommand.Parameters.AddWithValue("@id", did);
+                    insertCommand.Parameters.AddWithValue("@name", dname);
+                    insertCommand.Parameters.AddWithValue("@location", dlocation);
+                    insertCommand.CommandText = "sp_updateDepartment";
+                    sqlConnection.Open();
+                    int rowcount = insertCommand.ExecuteNonQuery();
+                    sqlConnection.Close();
+                    if (rowcount > 0)
+                    {
+                        Console.WriteLine(" Record updated Successfully");
+                    }
+                    else
+                    {
+                        Console.WriteLine(" Sorry! Something went wrong");
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine(" Please enter the correct id");
+            }
+        }
+
+        public static void GetAllDepartments()
+        {
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "server=GEETHA;database=IBM-Demos;Integrated Security=true;";
+            SqlCommand selectcmd = new SqlCommand();
+            selectcmd.Connection = conn;
+            selectcmd.CommandType = CommandType.StoredProcedure;
+            selectcmd.CommandText = "sp_GetAllDepartments";
+            conn.Open();
+           SqlDataReader reader= selectcmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Console.WriteLine($"{reader[0].ToString()}\t {reader[1].ToString()}\t {reader[2].ToString()}");
+            }
+            reader.Close();
+            conn.Close();
+
+        }
+
+==========================================================================================
+Another Example:
+------------------
+ class Cohort
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public string City { get; set; }
+    }
+
+    class CRUDusingADO
+    {
+      public static  SqlConnection conn; 
+      
+        static void AddNewCohort()
+        {
+            Console.WriteLine("Enter the Id,Name, Age and Location");
+            Cohort cohort = new Cohort();
+            cohort.Id = int.Parse(Console.ReadLine());
+            cohort.Name = Console.ReadLine();
+            cohort.Age = int.Parse(Console.ReadLine());
+            cohort.City = Console.ReadLine();
+            //Approach :1
+            conn = new SqlConnection();
+               conn.ConnectionString = "server=GEETHA;database=INTCDE008;Integrated Security=true;";
+            //Approach:2 
+            SqlConnection conn1 = new SqlConnection("server=GEETHA;database=INTCDE008;Integrated Security=true;");
+            //approach:1
+            SqlCommand insertcmd = new SqlCommand();
+            insertcmd.Connection = conn;
+            insertcmd.CommandType = CommandType.Text;
+            insertcmd.CommandText = $"insert into CohortList values ({cohort.Id},'{cohort.Name}',{cohort.Age},'{cohort.City}')";
+            //approach:2
+            SqlCommand insertcmd1 = new SqlCommand($"insert into CohortList values ({cohort.Id},'{cohort.Name}',{cohort.Age},'{cohort.City}')", conn);
+            conn.Open();
+          int rowcount=  insertcmd.ExecuteNonQuery();
+            conn.Close();
+            if (rowcount>0)
+            {
+                Console.WriteLine("Cohort details inserted successfully in Database");
+            }
+            else
+            {
+                Console.WriteLine( "Sorry! Something went wrong");
+            }
+        }
+        
+        static void Main(string[] args)
+        {
+            AddNewCohort();
+            Console.ReadLine();
+        }
+    }
+}
+================================================================================
+
+
+
+disconnected architecture:
+------------------------------
+ class Program
+    {
+        SqlConnection conn = new SqlConnection("server = GEETHA; database=IBM-Demos;Integrated security = true;");
+        SqlDataAdapter adapter;
+        SqlCommand cmd = new SqlCommand();
+        SqlCommandBuilder builder;
+        DataTable dt = new DataTable();
+        string dname, dlocation;
+        int did;
+	public  void GetAllDepartments()
+        {
+            cmd.Connection = conn;
+            cmd.CommandText = "select * from tblDepartment";
+            adapter = new SqlDataAdapter(cmd);             
+            conn.Open();
+            adapter.Fill(dt);
+            conn.Close();
+            Console.WriteLine("Total rows in datatable" + dt.Rows.Count);
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                Console.WriteLine(dt.Rows[i][0].ToString() + "\t" + dt.Rows[i][1].ToString() + "\t" + dt.Rows[i][2].ToString());
+            }      
+
+        }
+
+        public  void AddNewDepartment()
+        {   
+            Console.WriteLine(" Enter the department name and location");
+            dname = Console.ReadLine();
+            dlocation = Console.ReadLine();
+            DataRow newrow = dt.NewRow();
+            newrow["Id"] = 2006;
+            newrow["Name"] = dname;
+            newrow["Location"] =dlocation;
+            dt.Rows.Add(newrow);
+           
+            Console.WriteLine($"Rowcount in dt = {dt.Rows.Count}");
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                Console.WriteLine(dt.Rows[i][0].ToString() + "\t" + dt.Rows[i][1].ToString() + "\t" + dt.Rows[i][2].ToString());
+            }
+           
+        }
+        public  void updateDepartment()
+        {       
+            Console.WriteLine("Enter the Id you want to update");
+            did = int.Parse(Console.ReadLine());
+            int rowindex=0;
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                if(did.ToString() ==dt.Rows[i][0].ToString())
+                {
+                    rowindex = i+1;
+                    break;
+                }
+            }
+            if(rowindex>0)
+            {   Console.WriteLine(" Enter the department name and location");
+                dname = Console.ReadLine();
+                dlocation = Console.ReadLine();
+                dt.Rows[rowindex-1][1] = dname;
+                dt.Rows[rowindex-1][2] = dlocation;
+            }
+        }
+        public void deleteRecord()
+        {
+            int rowindex = 0;
+            Console.WriteLine(" Enter the department id to remove from table");
+            did = int.Parse(Console.ReadLine());
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                if(did.ToString()==dt.Rows[i][0].ToString())
+                {
+                    rowindex = i + 1;
+                    break;
+                }
+            }
+            if(rowindex>0)
+            {   DataRow rowtodelete = dt.Rows[rowindex - 1];
+                rowtodelete.Delete();
+            }         
+                  
+        }
+        
+        public void updatetoDB()
+        {
+            cmd = new SqlCommand();
+            builder = new SqlCommandBuilder(adapter);
+            conn.Open();
+            adapter.Update(dt);
+            conn.Close();
+        }
+        static void Main(string[] args)
+        {
+            Program program = new Program();
+            program.GetAllDepartments();
+            program.AddNewDepartment();
+           program.updateDepartment();           
+            program.deleteRecord();
+            program.updatetoDB();
+            program.GetAllDepartments();
+            Console.ReadLine();
+        }
+    }
+===========================================================================================
+
+to receive return value from Stored Procedure:
+-------------------------------------------
+
+
+ALTER proc [dbo].[adduser_test]
+(        
+@Fname Varchar(20),
+@Lname Varchar(20),
+@Uid Varchar(20),
+@Password Varchar(255),
+@Role Varchar(20),
+@createdby varchar(10),
+@out varchar(30) OUTPUT
+
+public string Adduser(string F_Name,string L_Name,string UserId,string Password,string Role,string CreatedBy)
+	{
+        SqlConnection conn = new SqlConnection(con.getConnection());
+        conn.Open();
+        SqlCommand cmd = new SqlCommand();
+        cmd.CommandType = CommandType.StoredProcedure;
+        cmd.CommandText = "dbo.adduser_test";
+        cmd.Parameters.AddWithValue("@Fname", F_Name);
+        cmd.Parameters.AddWithValue("@Lname", L_Name);
+        cmd.Parameters.AddWithValue("@Uid", UserId);
+        cmd.Parameters.AddWithValue("@Password", Password);
+        cmd.Parameters.AddWithValue("@Role", Role);
+        cmd.Parameters.AddWithValue("@Createdby", CreatedBy);
+        
+        cmd.Parameters.Add("@Out", SqlDbType.Char, 500);
+        cmd.Parameters["@Out"].Direction = ParameterDirection.Output;
+        cmd.Connection = conn;
+        cmd.ExecuteNonQuery();
+
+        string @out = (string)cmd.Parameters["@Out"].Value;
+
+        return @out;
+

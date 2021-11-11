@@ -1,0 +1,7 @@
+G:\TPL _Samples\TPL _Samples\bin\Debug\TPL _Samples.exe.config
+G:\TPL _Samples\TPL _Samples\bin\Debug\TPL _Samples.exe
+G:\TPL _Samples\TPL _Samples\bin\Debug\TPL _Samples.pdb
+G:\TPL _Samples\TPL _Samples\obj\Debug\TPL _Samples.csprojAssemblyReference.cache
+G:\TPL _Samples\TPL _Samples\obj\Debug\TPL _Samples.csproj.CoreCompileInputs.cache
+G:\TPL _Samples\TPL _Samples\obj\Debug\TPL _Samples.exe
+G:\TPL _Samples\TPL _Samples\obj\Debug\TPL _Samples.pdb

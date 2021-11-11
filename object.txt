@@ -1,0 +1,5 @@
+classname onjectname=new classname(); ==> object declaration and instantiation
+
+classname objectname; ==>  object declaration without instantiation
+objectname =new Classname(); ==> instantiate an object
+

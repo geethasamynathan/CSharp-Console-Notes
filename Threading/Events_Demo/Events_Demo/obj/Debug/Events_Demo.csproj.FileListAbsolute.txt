@@ -1,0 +1,7 @@
+G:\TalentEdge\Threading\Events_Demo\Events_Demo\bin\Debug\Events_Demo.exe.config
+G:\TalentEdge\Threading\Events_Demo\Events_Demo\bin\Debug\Events_Demo.exe
+G:\TalentEdge\Threading\Events_Demo\Events_Demo\bin\Debug\Events_Demo.pdb
+G:\TalentEdge\Threading\Events_Demo\Events_Demo\obj\Debug\Events_Demo.csprojAssemblyReference.cache
+G:\TalentEdge\Threading\Events_Demo\Events_Demo\obj\Debug\Events_Demo.csproj.CoreCompileInputs.cache
+G:\TalentEdge\Threading\Events_Demo\Events_Demo\obj\Debug\Events_Demo.exe
+G:\TalentEdge\Threading\Events_Demo\Events_Demo\obj\Debug\Events_Demo.pdb

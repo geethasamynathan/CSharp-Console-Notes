@@ -1,0 +1,178 @@
+
+    class Program
+    {
+        public static void SerializeData()
+        {
+            string mystr = "welcome to serialization Concept";
+            using (FileStream fs = new FileStream(@"G:\IBM\testFile.txt", FileMode.Create))
+            {
+                BinaryFormatter bf = new BinaryFormatter();
+                bf.Serialize(fs, mystr);
+            }
+        }
+    public static void DeSerailizeData()
+        {
+       
+            using (FileStream fs = new FileStream(@"G:\IBM\Employee.txt", FileMode.Open))
+            {
+                BinaryFormatter bf = new BinaryFormatter();
+                string str = (string)bf.Deserialize(fs);
+                fs.Close();
+                Console.WriteLine(" Deserailised Data\n " + str);
+            }
+
+
+        }
+        static void Main(string[] args)
+        {
+            SerializeData();
+            DeSerailizeData();           
+            Console.ReadLine();
+        
+        }
+
+
+
+============================================================================================
+//Serialize nad deserailize Custom Data
+---------------------------------------
+  [Serializable]
+    class Employee
+    {
+      //  [NonSerialized]
+        public int Id;
+        public string Name, Location;
+        public Employee(int id, string name,string location)
+        {
+            Id = id;
+            Name = name;
+            Location = location;
+        }
+    }
+
+    class Program
+    {
+        public static void SerializeData()
+        {
+            Employee employee = new Employee(101, "Geetha", "Tirupur");
+
+            using (FileStream fs = new FileStream(@"G:\IBM\Employee.txt", FileMode.Create))
+            {
+                BinaryFormatter bf = new BinaryFormatter();
+                bf.Serialize(fs, employee);
+            }
+        }
+        public static void DeSerailizeData()
+        {
+
+            using (FileStream fs = new FileStream(@"G:\IBM\Employee.txt", FileMode.Open))
+            {
+                BinaryFormatter bf = new BinaryFormatter();
+                Employee employee = (Employee)bf.Deserialize(fs);
+                fs.Close();
+                Console.WriteLine(" Deserailised Data ");
+                Console.WriteLine($" Id= {employee.Id} \n Name{employee.Name} \n Location ={employee.Location}");
+            }
+
+
+        }
+        static void Main(string[] args)
+        {
+            SerializeData();
+            DeSerailizeData();
+            Console.ReadLine();
+
+        }
+    }
+==========================================================================================
+XML Serialization:
+-----------------------
+
+ class Program
+    {
+        public static void SerializeData()
+        {
+            using (FileStream fs = new FileStream(@"G:\IBM\Myxml.txt", FileMode.Create))
+            {
+                XmlSerializer bf = new XmlSerializer(typeof(DateTime));
+                bf.Serialize(fs,System.DateTime.Now);
+            }
+        }
+        public static void DeSerailizeData()
+        {
+            using (FileStream fs = new FileStream(@"G:\IBM\Myxml.txt", FileMode.Open))
+            {
+                XmlSerializer bf = new XmlSerializer(typeof(DateTime));
+               DateTime time = (DateTime)bf.Deserialize(fs);
+                fs.Close();
+                Console.WriteLine(" Deserailised Data ");
+                Console.WriteLine($" day= {time.Day.ToString()} \n Time : {time.Hour}:{time.Minute}:{time.Second} \n Short Date ={time.ToShortDateString()}");
+            }
+        }
+        static void Main(string[] args)
+        {
+            SerializeData();
+            DeSerailizeData();
+           Console.ReadLine();
+
+        }
+    }
+====================================================================================================
+XML Serialization:
+------------------
+
+   public class Employee
+    {
+        public int Id;
+        public string Name, Location;
+        [XmlAttribute]
+       public string  Employeetype;
+        [XmlIgnore]
+        public int Salary;
+        public Employee()
+        {
+            Id = 1;
+            Name = "N/A";
+            Location = "N/A";
+            Employeetype = "Temperory";
+            Salary = 9000;
+        }
+        public Employee(int id, string name,string location,int salary)
+        {
+            Id = id;
+            Name = name;
+            Location = location;
+            Salary = salary;
+            Employeetype = "permenant";
+        }
+    }
+    class Program
+    {
+        public static void SerializeData()
+        { using (FileStream fs = new FileStream(@"G:\IBM\Employee-xml.txt", FileMode.Create))
+            {
+                Employee employee = new Employee(101, "Geetha", "Tirupur",12000);
+                XmlSerializer bf = new XmlSerializer(typeof(Employee));
+                bf.Serialize(fs,employee);
+            }
+        }
+        public static void DeSerailizeData()
+        {
+            using (FileStream fs = new FileStream(@"G:\IBM\Employee-xml.txt", FileMode.Open))
+            {
+                XmlSerializer bf = new XmlSerializer(typeof(Employee));
+               Employee emp = (Employee)bf.Deserialize(fs);
+               Console.WriteLine(" Deserailised Data ");
+                Console.WriteLine($" Id= {emp.Id} \n Name : {emp.Name} \n Location ={emp.Location} \n Salary={emp.Salary}");
+            }
+        }
+        static void Main(string[] args)
+        {
+            SerializeData();
+            DeSerailizeData();
+           Console.ReadLine();
+
+        }
+    }
+=============================================================================
+

@@ -1,0 +1,129 @@
+Generics in C#.NET
+===============
+Generics allow you to delay the specification of the data type of programming elements 
+in a class or a method, until it is actually used in the program. 
+In other words, generics allow you to write a class or method that can work with any data type.
+
+You write the specifications for the class or the method, with substitute parameters for data types. When the compiler encounters a constructor for the class or a function call for the method, it generates code to handle the specific data type.
+
+Generic Methods :
+===============
+ class Generic_Method
+    {
+        //declare the userdefined method with generic 
+        public static void Swap<sample>(ref sample x, ref sample y)
+        {
+            sample t;
+            t = x;
+            x = y;
+            y = t;
+        }
+        public static void Main()
+        {
+            int A = 10, B = 20;
+            string A1 = "Hello",B1="World";
+
+            //Calling the method Swap and pass integer type of data
+            Swap<int>(ref A, ref B);
+
+            //Calling the method Swap and pass string type of data
+            Swap<string>(ref A1, ref B1);
+                      
+            Console.WriteLine("After Swap A= {0} \t B= {1}", A, B);
+            Console.WriteLine("After Swap A1= {0} \t B1= {1}", A1, B1) ;
+            //
+            A1 = "hi";
+            B1 = "Hello";
+            Swap(ref A1, ref B1);
+            Console.WriteLine("After Swap A= {0} \t B= {1}", A1, B1);
+            Console.ReadKey();
+        }
+}
+}
+
+Generic Method with different Data-type:
+================================
+class Generic_Method_With_Diff_DataType
+    {
+        public static void Gmethod<myType1, myType2>(myType1 x, myType2 y)
+        {
+            Console.WriteLine(" Mytype1 = " + x);
+            Console.WriteLine(" Mytype2 = " + y);
+        }
+        static void Main()
+        {
+            Gmethod<int, float>(56, 9.4546f);
+            Gmethod<string, int>("Hello", 465);
+            Console.ReadKey();
+        }
+    }
+}
+
+Generic Class:
+============
+ class GenericClass<T,T1>
+    {   T a;
+        T1 b;
+        public GenericClass(T a, T1 b)
+        {
+            this.a = a;
+            this.b = b;
+        }
+        public void Display()
+        {
+            Console.WriteLine("The First value: {0}", a);
+            Console.WriteLine("The Second value: {0}", b);
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            GenericClass<int,string> iobj = new GenericClass<int,string >(10,"Hi");
+            GenericClass<string,char> sobj = new GenericClass<string,char>("Geetha",'S');
+            iobj.Display();
+            sobj.Display();
+            Console.ReadKey();
+        }
+    }
+}
+
+Generic Delegtes:
+==============
+delegate T NumberChanger<T>(T n);
+
+namespace GenericDelegateAppl
+{
+    class TestDelegate
+    {
+        static int num = 10;
+        public static int AddNum(int p)
+        {
+            num += p;
+            return num;
+        }
+
+        public static int MultNum(int q)
+        {
+            num *= q;
+            return num;
+        }
+        public static int getNum()
+        {
+            return num;
+        }
+
+        static void Main(string[] args)
+        {
+            //create delegate instances
+            NumberChanger<int> nc1 = new NumberChanger<int>(AddNum);
+            NumberChanger<int> nc2 = new NumberChanger<int>(MultNum);
+            //calling the methods using the delegate objects
+            nc1(25);
+            Console.WriteLine("Value of Num: {0}", getNum());
+            nc2(5);
+            Console.WriteLine("Value of Num: {0}", getNum());
+            Console.ReadKey();
+        }
+    }
+}

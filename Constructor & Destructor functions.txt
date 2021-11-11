@@ -1,0 +1,390 @@
+Constructor :
+=============
+this is special method which contain the same name of class. 
+constructor does not return any values.
+we don't  want to call the constructor explicitly. Whenever we create an object
+constructor will call automatically.
+
+Types of Constructor :
+--------------------
+Default (or) Parameterless Constructor
+
+parameterised Constructor
+
+static  Construnctor
+================================================================================
+static constructor invocation Without any  object :
+-------------------------------------------------------------------------------
+ class simple
+    {
+        // Constructor Declaration 
+        public simple()
+        {
+            Console.WriteLine(" I am Constructor");
+        }
+        //parameterised Constructor
+        public simple(string s)
+        {
+            Console.WriteLine(" I am Parameterised Constructor");
+            Console.WriteLine("S = " + s);
+        }
+        //parameterised Constructor 
+        public simple(string s1,string s2)
+        {
+            Console.WriteLine(" I am Parameterised Constructor");
+            Console.WriteLine(" s1= {0} \n s2={1}", s1, s2);
+        }
+        //static Constructor 
+        static simple()
+        {
+            Console.WriteLine(" I am Static Constructor");
+        }
+        //method Declaration
+
+        public static  void sum()
+        {
+            Console.WriteLine("I  am method ");
+        }
+     }
+
+    class Constructor_Sample
+    {
+        static void Main()
+        {
+            simple.sum();
+            //simple obj = new simple();
+            //simple y = new simple("Hai");
+            //simple x = new simple("Hello", "Welcome");
+            Console.ReadKey();
+        }
+    }
+}
+
+
+======================================================================================
+
+Copy Constructor :
+---------------------
+
+    class simple
+    {
+        // Constructor Declaration 
+        int a = 10;
+        public simple()
+        {
+            Console.WriteLine(" Default Constructor");
+        }
+        public simple(string s)
+        {
+            Console.WriteLine(" I am Parameterised Constructor");
+            Console.WriteLine(" s= " + s);
+        }       
+        //parameterised Constructor 
+        public simple(simple o1)
+        {
+            Console.WriteLine(" I am Copy Constructor \n a ="+o1.a);   
+          
+        }        
+        //method Declaration
+        public static  void sum()
+        {
+            Console.WriteLine("I  am method ");
+        }
+     }
+
+    class Constructor_Sample
+    {
+        static void Main()
+        {   
+            simple y = new simple("Hai");
+            
+            simple z = new simple();
+            simple x = new simple(z);
+            Console.ReadKey();
+        }
+    }
+}
+
+===================================================================================
+Destructor :
+------------
+it same like as Constructor but it preceed with the ~ symbol.
+
+It does not contain any argument and Access specifier.
+
+It is mainly used to Deallocate the Memory.
+
+
+------------------------------------------------------------------------
+
+Example For Destructor :
+=========================
+ class simple
+    {
+        // Constructor Declaration 
+        int a = 10;
+    public    simple()
+        {
+            Console.WriteLine(" Default Constructor");
+        }
+    ~simple()
+    {
+        Console.WriteLine("Destructor");
+    }
+
+     }
+
+    class Constructor_Sample
+    {
+        static void Main()
+        {   
+           
+             simple z = new simple();
+          
+         
+        }
+    }
+}
+==========================================================================================
+class simple
+    {
+        // Constructor Declaration 
+        int a = 10;
+    public    simple()
+        {
+            Console.WriteLine(" Default Constructor");
+        }
+    public simple(int a)
+    {
+        Console.WriteLine(" Parameterrised Constructor \na =" + a);
+    }
+    ~simple()
+    {
+        Console.WriteLine("Destructor");
+    }
+
+     }
+
+    class Constructor_Sample
+    {
+        static void Main()
+        {   
+           
+             simple z = new simple();
+             simple x = new simple(34);
+         
+        }
+    }
+}
+
+====================================================================================
+Constructor and Destructor in Inheritance:
+==========================================
+
+    class simple
+    {
+        // Constructor Declaration 
+        int a = 10;
+    public    simple()
+        {
+            Console.WriteLine(" Base  Constructor");
+        }
+    ~simple()
+    {
+        Console.WriteLine(" Base Destructor");
+    }
+
+     }
+    class example : simple
+    {
+        public example()
+        {
+            Console.WriteLine(" Derived Constructor");
+        }
+        ~ example ()
+        {
+            Console.WriteLine(" Derived Destructor");
+        }
+    }
+
+    class Constructor_Sample
+    {
+        static void Main()
+        {
+            example obj = new example();
+
+           
+         
+        }
+    }
+}
+======================================================================
+  class simple
+    {
+        public simple(int x)
+        {
+        Console.WriteLine("I default constructor of Simple(or) Base class");
+             Console.WriteLine(" x= " +x);        
+        }
+       
+  ~simple()
+      {
+          Console.WriteLine(" I am Base Destructor" );
+      }
+    }
+    class derived : simple
+    {
+        public derived(): base(34)
+        {
+            Console.WriteLine(" I am default of Derived Class");
+        }
+        ~derived()
+        {
+            Console.WriteLine("I am Derived Destructor");
+        }
+    }
+    class Constructor_Sample
+    {
+        static void Main()
+        {
+            derived o = new derived();
+            Console.ReadLine();
+        }
+    }
+}
+
+=====================================================================================
+call  by value  and Call by Reference:
+--------------------------------------
+
+  static void Main(string[] args)
+        {
+            int a, b;
+            a = 10;
+            b = 10;
+            Console.WriteLine("\nCalling By Value Demonstration:\n\n");
+            Console.WriteLine("Value of A in Main Before Calling: " + a);
+            MethodValue(a);
+            Console.WriteLine("Value of A in Main After Calling: " + a);
+
+            Console.WriteLine("\n\n\nCalling By Reference Demonstration:\n\n");
+            Console.WriteLine("Value of B in Main Before Calling: " + b);
+            MethodReference(ref b);
+            Console.WriteLine("Value of B in Main After Calling: " + b);
+
+            Console.ReadKey();
+        }
+
+        public static void MethodValue(int a)
+        {
+            a = a + 10;
+            Console.WriteLine("Value of A in  MathodValue : " + a);
+        }
+        public static void MethodReference(ref int z)
+        {
+            z = z + 10;
+            Console.WriteLine("Value of B in MethodReference : " + z);
+        }
+    }
+}
+
+======================================================================================
+
+out Parameter
+==============
+
+C# out parameter is such type of parameter that is declared with out keyword. 
+It is the same as reference parameter, that doesn’t create memory allocation.
+
+Why use out parameter in C#?
+----------------------------
+Usually, a method returns value with return keyword.
+ 
+Unfortunately, a return modifier can return only one value at a time.
+ 
+Sometime, your C# program required to return multiple values from a single method.
+
+In this situation, you need such type of function that can produce multiple output 
+result from a single function. The output parameter C# lets your program 
+to return multiple values.
+=======================================================================
+
+ class out_Parameter
+    {    //Accept two input parameter and returns two out value
+     public static void rect(int len, int width, out int area, out int perimeter)
+      {
+        area = len * width;
+        perimeter = 2 * (len + width);
+      }
+     static void Main(string[] args)
+      {
+        int area, perimeter;
+        // passing two parameter and getting two returning  value
+        out_Parameter.rect(5, 4, out area, out perimeter);
+        Console.WriteLine("Area of Rectangle is {0}\t", area);
+        Console.WriteLine("Perimeter of Rectangle is {0}\t", perimeter);
+        Console.ReadLine();
+      }
+   }
+
+---------------------------------------------------------------------------------------
+
+  class Out_Param1
+    {
+        static void TestString(string value, out bool period, out bool comma, out bool semicolon)
+        {
+            period = comma = semicolon = false; // Assign all out parameters to false
+
+            for (int i = 0; i < value.Length; i++)
+            {
+                switch (value[i])
+                {
+                    case '.':
+                        {
+                            period = true; // Set out parameter
+                            break;
+                        }
+                    case ',':
+                        {
+                            comma = true; // Set out parameter
+                            break;
+                        }
+                    case ';':
+                        {
+                            semicolon = true; // Set out parameter
+                            break;
+                        }
+                }
+            }
+        }
+        static void Main()
+        {
+            bool period; // Used as out parameter
+            bool comma;
+            bool semicolon;
+            const string value = "has period, comma."; // Used as input string
+
+            TestString(value, out period, out comma, out semicolon);
+
+            Console.WriteLine(value); // Display value
+            Console.Write("period: "); // Display labels and bools
+            Console.WriteLine(period);
+            Console.Write("comma: ");
+            Console.WriteLine(comma);
+            Console.Write("semicolon: ");
+            Console.WriteLine(semicolon);
+            Console.ReadKey();
+        }
+    }
+
+-----------------------------------------------------------------------------------
+
+Param in C#
+=============
+
+Params enables methods to receive variable numbers of parameters.
+ With params, the arguments passed to a method are changed by the compiler to 
+elements in a temporary array. 
+
+This array is then used in the receiving method.
+

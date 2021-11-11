@@ -1,0 +1,262 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Demo2_ConsoleApplication
+{
+    class student
+    {
+        int sid, mark1, mark2, total;
+        string name;
+      public void getStudentDetail()
+        {
+            Console.WriteLine("Enter the student id,Name, Mark ,Mark2");
+            sid = Convert.ToInt32(Console.ReadLine());
+            name = Console.ReadLine();
+            mark1 = Convert.ToInt32(Console.ReadLine());
+            mark2 = Convert.ToInt32(Console.ReadLine());
+        }
+      public void printStudentDetail()
+        {
+            total = mark1 + mark2;
+            Console.WriteLine("Student Id " +sid);
+            Console.WriteLine("Student Name " +name);
+            Console.WriteLine(" Mark 1 "+mark1);
+            Console.WriteLine("Mark 2 : " +mark2);
+            Console.WriteLine("Total = " + total);
+        }
+    }
+    class Program
+    {
+       static  int empid, salary;
+        static string empname, designation;
+        // to get the Employee details from the user at runtime
+      static   void getEmployeeDetail()//no arguments or parameter 
+        {
+            Console.WriteLine("Enter the Empid,Empname,Designation,Salary");
+            empid = Convert.ToInt32(Console.ReadLine());
+            empname = Console.ReadLine();
+            designation = Console.ReadLine();
+            salary = Convert.ToInt32(Console.ReadLine());
+        }
+
+       static void printEmployeeDetails()
+        {
+            Console.WriteLine(" \n\n -------------------------------"); 
+            Console.WriteLine("Employee Details are " );
+            Console.WriteLine("Employee Id : " +empid );
+            Console.WriteLine("Employee Name : "+empname );
+            Console.WriteLine("Designation    " +designation);
+            Console.WriteLine(" Employee Salary : " +salary);
+        }
+            //void ==> it does not return any values to the calling function
+        static void Main(string[] args)
+        {
+           //// getEmployeeDetail(); // main function is calling getEmployeeDetail function
+           // // getEmployeeDetail() ==> called function
+           // //Main() ==> calling function
+           //// printEmployeeDetails();// main function is calling printEmployeeDetails function
+           // // printEmployeeDetails() ==> called function
+           // //Main() ==> calling function
+           // //Method 1 to create an object
+           // //create the object for student class
+           // student sobj;
+           // //instantiate the object
+           // sobj = new student();
+           // //Method 2-create an object
+           ////object creation and instantiation
+           // student sobj1 = new student();
+           // sobj.getStudentDetail();
+           // sobj.printStudentDetail();
+
+            //Student_Demo.getStudentDetail();
+            //Student_Demo.printStudentDetail();
+            string x,x1;
+            Console.WriteLine("Enter the value of x between A-D");
+            x = Console.ReadLine();
+            x1 = x.ToUpper();
+            switch (x1)
+            {
+                case "A": Console.WriteLine("Apple"); break;
+                case "B": Console.WriteLine("Banana"); break;
+                case "C": Console.WriteLine("chiku"); break;
+                case "D": Console.WriteLine("dog"); break;
+                default: Console.WriteLine(" Invalid Entry"); break;
+            }
+            Console.ReadLine();
+            Console.ReadLine();
+        }
+    }
+}
+
+===============================================================
+ class Student_Demo
+    {
+       static  int sid, mark1, mark2, total;
+        static string name;
+        public  void getStudentDetail()
+        {
+            Console.WriteLine("Enter the student id,Name, Mark ,Mark2");
+            sid = Convert.ToInt32(Console.ReadLine());
+            name = Console.ReadLine();
+            mark1 = Convert.ToInt32(Console.ReadLine());
+            mark2 = Convert.ToInt32(Console.ReadLine());
+        }
+        public   void printStudentDetail()
+        {
+            total = mark1 + mark2;
+            Console.WriteLine("Student Id " + sid);
+            Console.WriteLine("Student Name " + name);
+            Console.WriteLine(" Mark 1 " + mark1);
+            Console.WriteLine("Mark 2 : " + mark2);
+            Console.WriteLine("Total = " + total);
+        }
+}
+
+ class Program
+    {
+        static void Main(string[] args)
+        {
+            Student_Demo obj = new Student_Demo();
+            Student_Demo obj1 = new Student_Demo();
+            obj.getStudentDetail();
+            obj1.printStudentDetail();
+            Console.ReadLine();
+        }
+    }
+===================================================================
+
+creating Array of object for a class :
+------------------------------------------------------------
+class Program
+    {
+        static void Main(string[] args)
+        {
+            Student obj = new Student();
+            //--Array of Objects Declaration
+            Student[] sobj = new Student[3];
+            //--To allocate memory for each and every objects, will avoid NullReferenceException
+            int i=0;
+            while (i < 3)
+            {
+                sobj[i] = new Student();
+                i++;
+            }
+
+            //for (int i = 0; i < 3; i++)
+            //{
+            //    sobj[i] = new Student();
+            //}
+
+            for (int j = 0; j < 3; j++)
+            {
+                sobj[j].readStudent();
+            }
+            obj.headerStudent();
+            for (int j = 0; j < 3; j++)
+            {
+                sobj[j].writeStudent();
+            }
+
+            Console.ReadKey();
+        }
+    }
+     //--Defining the Class
+    class Student
+    {
+        //--Data Members Section
+        int rno;
+        string name;
+        string dept;
+
+        //--Methods Declaration
+        public void readStudent()
+        {
+            Console.WriteLine("Enter the Student Details: ");
+            rno = int.Parse(Console.ReadLine());
+            name = Console.ReadLine();
+            dept = Console.ReadLine();
+        }
+        public void headerStudent()
+        {
+            Console.WriteLine("------------------------------------");
+            Console.WriteLine("---Student Information Database---");
+            Console.WriteLine("------------------------------------");
+            Console.WriteLine("ROLLNO:\tNAME:\t\tDEPT:");
+            Console.WriteLine("------------------------------------");
+        }
+        public void writeStudent()
+        {
+            Console.WriteLine("{0}\t{1}\t\t{2}", rno.ToString(), name, dept);
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------
+Example for Partial Class :
+-----------------------------------------
+
+partial class Arithmetic
+    {
+        //--Data Members Declaration
+        int a, b, c;
+       
+    }
+    
+    class Program
+    {
+       
+        static void Main(string[] args)
+        {
+            Arithmetic obj = new Arithmetic();
+            obj.Add(20, 10);
+            obj.Subtract(20, 10);
+            obj.Multiply(20, 10);
+            obj.Divide(20, 10);
+            obj.Modulo(20, 10);
+            Console.ReadKey();
+        }
+    }
+}
+
+ partial class Arithmetic
+    {
+        //--Methods Definition
+        public void Add(int x, int y)
+        {
+            a = x;
+            b = y;
+            c = a + b;
+            Console.WriteLine("The Sum: " + c.ToString());
+        }
+        public void Subtract(int x, int y)
+        {
+            a = x;
+            b = y;
+            c = a - b;
+            Console.WriteLine("The Difference: " + c.ToString());
+        }
+        public void Multiply(int x, int y)
+        {
+            a = x;
+            b = y;
+            c = a * b;
+            Console.WriteLine("The Product: " + c.ToString());
+        }
+        public void Divide(int x, int y)
+        {
+            a = x;
+            b = y;
+            c = a / b;
+            Console.WriteLine("The Quotient: " + c.ToString());
+        }
+        public void Modulo(int x, int y)
+        {
+            a = x;
+            b = y;
+            c = a % b;
+            Console.WriteLine("The Remainder: " + c.ToString());
+        }
+    }
+}
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX

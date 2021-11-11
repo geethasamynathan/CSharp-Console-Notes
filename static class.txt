@@ -1,0 +1,114 @@
+C# Static Class with Examples
+---------------------------------
+
+a static class can be created by using static modifier and the static class can contain only static members.
+
+ 
+
+Generally, the static class is same as non-static class, but only difference is the static class cannot be instantiated. Suppose if we apply static modifier to a class, then we should not use the new keyword to create a variable of the class type.
+
+ 
+
+Another difference is the static class will contain only static members, but the non-static class can contain both static and non-static members.
+
+C# Static Class Syntax
+In c#, we can create a static class by applying static keyword to the class like as shown below.
+
+ 
+
+static class sample
+
+ {
+
+     //static data members
+
+    //static methods
+
+ }
+
+If you observe above syntax, to create a static class called “sample”, we applied static keyword to the class type. The methods and data members which we are going to implement in sample class must be a static.
+
+ 
+
+In c#, we can access a members of static class directly with the class name. For example, we have a static class called “User” with a method “Details()” that we can access like User.Details().
+
+C# Static Class Example
+Following is the example of defining a static class to access data members and member functions without creating an instance of class in c# programming language.
+
+ 
+
+using System;
+
+ 
+
+namespace Tutlane
+
+{
+
+    static class User
+
+    {
+
+        // Static Variables
+
+        public static string name;
+
+        public static string location;
+
+        public static int age;
+
+        // Static Method
+
+        public static void Details()
+
+        {
+
+            Console.WriteLine("Static Method");
+
+        }
+
+    }
+
+    class Program
+
+    {
+
+        static void Main(string[] args)
+
+        {
+
+            User.name = "Geetha";
+
+            User.location = "Tirupur";
+
+            User.age = 32;
+
+            Console.WriteLine("Name: {0}", User.name);
+
+            Console.WriteLine("Location: {0}", User.location);
+
+            Console.WriteLine("Age: {0}", User.age);
+
+            User.Details();
+
+            Console.WriteLine("\nPress Enter Key to Exit..");
+
+            Console.ReadLine();
+
+        }
+
+    }
+
+}
+
+If you observe above example, we are accessing static class members and functions directly with the class name because we cannot instantiate the static class.
+
+Following are the main features of static class in c# programming language.
+
+ 
+
+The static class in c# will contain only static members.
+In c#, the static classes cannot be instantiated.
+C# static classes are sealed, therefore it cannot be inherited.
+The static classes in c# will not contain instance constructors.
+As discussed in previous article static keyword in c#, we can use static members in non-static classes such as normal classes. For normal classes we can create an instance of class using new keyword to access non-static members and functions but it cannot access the static members and functions.

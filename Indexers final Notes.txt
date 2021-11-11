@@ -1,0 +1,56 @@
+/// <summary>
+    /// Indexer 
+    /// Use "This" keyword to create indexer
+    /// Just like properties it have get and set accessors.
+    /// Indexers can also be overloaded
+    /// </summary>
+    class Employee
+    {
+        public int EmployeeId { get; set; }
+        public String  Name { get; set; }
+        public String GEnder { get; set; }
+
+    }
+    class Company
+    {
+        List<Employee> employeelist = new List<Employee>();
+        public Company()
+        {
+
+            employeelist.Add(new Employee { EmployeeId = 1, Name = "Geetha", GEnder = "Female" });
+            employeelist.Add(new Employee { EmployeeId = 2, Name = "Tandra", GEnder = "Male" });
+            employeelist.Add(new Employee { EmployeeId = 3, Name = "Murthi", GEnder = "Male" });
+            employeelist.Add(new Employee { EmployeeId = 4, Name = "Saro", GEnder = "Female" });
+            
+        }
+        public string this[int empid]
+        {
+            get
+            {
+                return employeelist.FirstOrDefault(emp => emp.EmployeeId == empid).Name ;
+            }
+            set
+            {
+                employeelist.FirstOrDefault(emp => emp.EmployeeId == empid).Name = value;
+            }
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Company obj = new Company();
+            Console.WriteLine( " Employee Name with Id =2" +obj[2]  );
+            Console.WriteLine(" Employee Name with Id =3" + obj[3]);
+            Console.WriteLine(" Employee Name with Id =4" + obj[4]);
+            Console.WriteLine( "\n\n Change the EMployee Name Accoding to ID \n   " );
+            obj[2] = "Second Employee name changed";
+            obj[4] = "fourh EMployee Name changed";
+
+            Console.WriteLine("\n\n Employee Name with Id =2" + obj[2]);
+            Console.WriteLine(" Employee Name with Id =3" + obj[3]);
+            Console.WriteLine(" Employee Name with Id =4" + obj[4]);
+            Console.ReadLine();
+        }
+    }
+}

@@ -1,0 +1,47 @@
+ static  void Main(string[] args)
+        {
+
+            //  list<int> numbers = new list<int> { 12, 4, 23, 5, 35,54,68,14 };
+            //var  squarednumbers =numbers.select(x => x * x);
+            //  console.writeline(string.join(" " ,squarednumbers));
+
+            //list<int> evennumbers=  numbers.findall(x => x % 2 == 0);
+            //  console.writeline(" even number in the list");
+            //  foreach (var even in evennumbers)
+            //  {
+            //      console.writeline(even);
+            //  }
+
+
+            List<Employee> employees = new List<Employee>();
+            Employee emp1 = new Employee() { Id = 101, Name = "Sharmila", Experience = 12, Salary = 9000 };
+            Employee emp2 = new Employee() { Id = 102, Name = "Kalai    ", Experience = 10, Salary = 6000 };
+            Employee emp3 = new Employee() { Id = 103, Name = "Prinsy   ", Experience = 8, Salary = 7000 };
+            Employee emp4 = new Employee() { Id = 104, Name = "Kumar    ", Experience = 5, Salary =8000 };
+
+            employees.Add(emp1);
+            employees.Add(emp2);
+            employees.Add(emp3);
+            employees.Add(emp4);
+
+            var sortedEmployees = employees.OrderBy(x => x.Experience);
+            foreach (var item in sortedEmployees)
+            {
+                Console.WriteLine($"{item.Id}\t {item.Name} \t {item.Experience}\t {item.Salary}");
+            }
+
+            Console.WriteLine(" OrderBy Descending on salary");
+            var sortedEmployeesdes = employees.OrderByDescending(x => x.Salary);
+            foreach (var item in sortedEmployeesdes)
+            {
+                Console.WriteLine($"{item.Id}\t {item.Name} \t {item.Experience}\t {item.Salary}");
+            }
+
+            var salgreater5k = employees.FindAll(e => e.Salary > 8000);
+            Console.WriteLine(" Salary Greater than 5000");
+            foreach (var item in salgreater5k)
+            {
+                Console.WriteLine($"{item.Id}\t {item.Name} \t {item.Experience}\t {item.Salary}");
+            }
+            Console.ReadLine();
+        }
