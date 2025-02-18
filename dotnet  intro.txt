@@ -1,0 +1,1282 @@
+.NET ==> Environment (or)  framework
+
+it will support one or more language
+
+Microsoft Visual studio 2010
+
+Microsoft visual studio 2012 
+
+Microsoft visual studio 2013
+
+Microsoft visual studio 2015
+
+Microsoft visual studio 2017
+
+Microsoft visual studio 2019
+
+
+NET==> Network embeded Technology
+
+Languages used in .net :
+--------------------------------------
+C#.Net 
+vb.Net
+visual C++
+J#
+F#
+
+using .NET we can develop different kind of Application :
+===============================================
+
+Console Application ==> CUI ==> Character (or) Command User interface
+
+Windows or Desktop Application ==>GUI (Graphical User interface ) ==> Library management,hospital management,
+
+Web based Application ==> online ticket booking
+
+service based application ==> web service ,WCF (windows Communication Foundation),Web API.
+
+
+
+Two main components in .Net Framework :
+
+1. Class  Library (or) FCL  Framework  class Library (or) Base class Library (BCL) .
+
+2. CLR Common Language Runtime . It will provide runtime environment
+
+C#.net
+
+source code ==> MSIL (or) CIL ==> Native code
+
+.
+MSIL ==> Microsoft Intermediate Language
+
+CIL ==> Common Intermediate Language 
+
+CLS==> common language specification
+
+CTS ==> Common type System
+
+
+managed code : whatever code we can able to execute in the CLR environment
+
+Unmanaged Code : whatever code we can't  able to execute in the CLR environment
+
+
+namespace :  is collection of class.
+
+class : collection of methods
+
+method : set of instructions
+
+Simple hello world program in C# using Console Application :
+===================================================
+ static void Main(string[] args)
+        {
+            System.Console.WriteLine(" hi  Welcome to .NET session");
+            Console.WriteLine(" Hi welcome");
+            
+            //System ==>  namespace
+            //Console ==> Class
+            //WriteLine ==> method ==> display the output
+            /* 
+                * writeLine  method present  in the class known as Console.
+             * 
+             * Console is class present in  the Namespace known as System
+             * 
+             ** 
+             **/
+         
+
+        }
+
+Variable Declaration :
+-------------------------
+
+Syntax :
+========
+
+Datatype variablename;
+
+
+Datatype :
+----------------
+ It is mainly used to allocate the memory.
+
+Generally data can be devided into 2 types :
+
+	 1. Numeric Data				2.Non-Numeric Data
+
+
+whole number 	Decimal Number		 Single alphabet	 group of alphabets
+
+
+Integer		float, double	          	  character		string
+
+
+
+Integer ==>  int ==>  it will hold whole numbers ==> 563464,..
+
+float,double ==> float ==> it will hold decimal number ==> 5.35, 6786.3434353,...
+
+Character ==> char ==>  it will hold only a single alpahbet ==> define within the sigle quotation.
+
+string==> string ==> it will holds the group of characters ==> define within the double quotation.
+
+
+
+VariableName :
+-----------------------
+ It is a name which can hold the value depends on the datatype.
+
+Variable Name should start with alphabet and underscore ( _ )
+
+ex :  	int a; 
+	int _ab;
+
+rama ==>  correct
+_rama==> correct
+1rama ==> wrong
+ra1ma==> correct
+rama1==> correct
+ int ra ma==> wrong ==> space is not allowed in variable name
+int ra.ma==> wrong
+int ra_ma==>correct
+
+
+Variable Name should not start with numbers but it may contain the number at the 
+middle or end of the variable .
+
+ex : 	int a1b;
+	int 1ab;  ==> wrong
+
+
+Variable Name should not exceed above 31 characters.
+
+Variable Name should not be keywords.
+
+===========================================================================
+Simple Example for Variable decalration :
+---------------------------------------------------------------
+static void Main(string[] args)
+        {
+            int a, b, c;
+            a = 345;
+            b = 678;
+            c = a + b;
+            Console.WriteLine(" a  value= " + a);
+            Console.WriteLine(" b value = " + b);
+            Console.WriteLine(" a+b =" + c);
+
+        }
+=====================================================================================
+static void Main(string[] args)
+        {
+            // Variable declartion
+            int num1, num2, result; 
+            //Assigning the value to the variable
+            num1 = 3456;
+            num2 = 9000;
+            result = num1 + num2;
+           Console.WriteLine("First Number = " +num1);
+            Console.WriteLine("second Number = "+num2);
+            Console.WriteLine("Result = "+result );
+            Console.ReadLine();
+
+            
+        }
+    }
+==================================================================================
+class Program
+    {
+        static void Main(string[] args)
+        {
+            int a, b, c;
+            a = 90;
+            b = 24;
+            c = a + b;
+           
+            Console.WriteLine("A = " + a + " B=" + b);
+            Console.WriteLine(" A= {0} B={1}", a, b);
+	    Console.WriteLine($" a= {a} \n b={b} \n result= {c}");
+            Console.ReadLine();
+        }
+    }
+===============================================================================
+ // Variable declartion
+            int num1, num2, result; 
+            //Assigning the value to the variable
+            num1 = 3456;
+            num2 = 9000;
+            result = num1 + num2;          
+            Console.WriteLine(" Num1 ={0} \n Num2 ={1} \n Result = {2}",num1,num2,result );
+            Console.WriteLine("\n\n Num1 ={2} \n Num2 ={1} \n Result = {0}", num1, num2, result);
+            Console.WriteLine(" \n\n Num1 = "+num1 + " Num2 = "+num2 +" Result = "+result);
+
+            // \n==> New Line character ==> used to move to the next line in output window
+
+            Console.ReadLine();
+
+================================================================================
+static void Main(string[] args)
+        {
+            int a=5666;
+            float b=43.6557f;
+            char c = 'X';
+            string name = "Geetha";
+            Console.WriteLine(" Integer = {0}", a);
+            Console.WriteLine(" Float = {0}", b); 
+            Console.WriteLine(" Char = {0}", c);
+            Console.WriteLine(" string = {0}", name);
+            Console.ReadLine();
+        }
+=================================================================================
+simple program to get the value at runtime :
+-------------------------------------------------------------------
+   static void Main(string[] args)
+        { int a, b, c;
+        Console.WriteLine(" Enter the 2 integer values ");
+        a = Convert.ToInt32(Console.ReadLine());
+        b = Convert.ToInt32(Console.ReadLine());
+        c = a + b;
+        Console.WriteLine(" A + B = " + c);
+
+          //  Console.ReadLine() ==> int used to  get the value at runtime from the user
+            /**
+             * after  getting the value at runtime we need to convert string 
+            into integer because we declared the variable a as integer.
+             * 
+             * 
+             * */
+        }
+
+==================================================================================
+Control Statement:
+----------------------------
+is mainly used to check the condition .according to the condition checking we will print some 
+output.
+
+
+
+if 
+
+if  - Else
+
+Nested if 
+
+Else if  ladder 
+
+switch 
+
+loop 
+-------------------------------
+
+ synatx for if :
+=================
+if(condition)   // () ==> set parenthesis
+{
+true block statement; ( it will allow one or more statement)
+}
+
+
+if(condition)
+true block statament . (but only one statement allowed )
+
+
+Example for if and Else :
+------------------------------------
+
+   class Program
+    {
+        static void Main(string[] args)
+        { 
+	int a, b;
+        Console.WriteLine(" Enter the 2 integer values ");
+        a = Convert.ToInt32(Console.ReadLine());
+        b = Convert.ToInt32(Console.ReadLine());
+
+        if (a > b)
+        {
+            Console.WriteLine(" A is greater than b");
+           Console.WriteLine(" end of the true block statement");
+        }
+        else
+        {  
+         Console.WriteLine("B is greater than A");
+        Console.WriteLine("End of the false block statement ");
+        }
+        Console.ReadLine();
+
+        }
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+Example for Nested if  :
+====================
+
+class Program
+    {
+        static void Main(string[] args)
+        { int a, b,c;
+        Console.WriteLine(" Enter the 3 integer values "); // display the mesage in output window
+        a = Convert.ToInt32(Console.ReadLine());  //a =180;
+        b = Convert.ToInt32(Console.ReadLine());  //b=100;
+        c = Convert.ToInt32(Console.ReadLine()); // c=230;
+            //outer if
+        if (a > b)    //(100>180)
+        {
+            // inner if
+            if (a > c)
+            {
+                Console.WriteLine(" A is greatest ");
+            }
+            // inner  else
+            else
+            {
+                Console.WriteLine(" A is not greater than c ");
+            }
+        }
+
+            //outer else
+        else
+        {
+            Console.WriteLine("A is not greater than b");
+        }
+
+        Console.ReadLine();
+
+        }
+
+============================================================
+
+ operators :
+-------------
+
+Arithmetic  ==> +,-,* ,/ ,%==> modulus
+
+Assignment ==> = , += , -= ,*=,/=
+
+Bitwise
+
+Conditional ==> ? :
+
+increment /Decrement  ==> ++ ,--
+
+logical==> &&, ||,!
+
+relational ==> >,<, <=, >=, == ,!=
+
+
+
+a=10
+b=3
+c =10/3
+
+d= 10%3
+
+
+&&==> logical and operator :
+=========================
+ is mainly used to check more than one condition at a time. if  all the given conditions are true then only move to the true block.
+==============================================================
+
+Example for if else if else using Logical operator :
+---------------------------------------------------------------------------
+class Program
+    {
+        static void Main(string[] args)
+        { int a, b,c;
+        Console.WriteLine(" Enter the 3 integer values ");
+        a = Convert.ToInt32(Console.ReadLine()); 
+        b = Convert.ToInt32(Console.ReadLine()); 
+        c = Convert.ToInt32(Console.ReadLine()); 
+        if (a > b && a > c) 
+        {
+            Console.WriteLine("A is  greatest");
+        }
+        else if (b > a && b > c) 
+        {
+            Console.WriteLine("B is greatest");
+        }
+        else
+        {
+            Console.WriteLine(" c is greatest");
+        }
+              Console.ReadLine();
+
+        }
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+ switch Statement :
+----------------------
+
+it is otherwise called as multibranching statement. it can replace by multiple if  else.
+
+
+Syntax for switch statement :
+=============================
+
+variable declaration;
+
+initialization;
+
+switch(choice)
+{
+ 
+case value : statement; break
+.
+.
+.
+
+}
+
+=========================================================================
+
+
+ int x;
+            Console.WriteLine(" Enter the value of x between 1-4");
+            x = Convert.ToInt32(Console.ReadLine());
+            switch (x)
+            {
+                case 1: Console.WriteLine(" One"); break;
+                case 2: Console.WriteLine(" Two"); break;
+                case 3: Console.WriteLine(" Three"); break;
+                case 4: Console.WriteLine(" Four"); break;
+                default: Console.WriteLine(" Invalid Entry"); break;
+            }
+
+=================================================================================
+
+Char x;
+            Console.WriteLine(" Enter the value of x between 1-4");
+            x = Convert.ToChar (Console.ReadLine());
+            switch (x)
+            {
+                case 'A': Console.WriteLine(" One"); break;
+                case 'B': Console.WriteLine(" Two"); break;
+                case 'C': Console.WriteLine(" Three"); break;
+                case 'D': Console.WriteLine(" Four"); break;
+                default: Console.WriteLine(" Invalid Entry"); break;
+            }
+
+===============================================================================
+
+
+            string  x;
+            Console.WriteLine(" Enter the value of any one of the following hi,hello,welcome,Nice");
+            x =Console.ReadLine();
+            switch (x)
+            {
+                case "hi": Console.WriteLine(" One"); break;
+                case "hello": Console.WriteLine(" Two"); break;
+                case "welcome": Console.WriteLine(" Three"); break;
+                case "Nice": Console.WriteLine(" Four"); break;
+                default: Console.WriteLine(" Invalid Entry"); break;
+            }
+my input is : nice . What will be the output
+===============================================================================
+
+            string  x;
+            Console.WriteLine("Enter the value of x between A-D");
+            x = Console.ReadLine();           
+            
+            switch (x.ToUpper())
+            {
+                case "A": Console.WriteLine("Apple"); break;
+                case "B": Console.WriteLine("Banana"); break;
+                case "C": Console.WriteLine("chiku"); break;
+                case "D": Console.WriteLine("dog"); break;
+                default: Console.WriteLine(" Invalid Entry"); break;
+            }
+            Console.ReadLine();
+============================================================================================
+loop (or) iteration :
+=================
+ is mainly used to do the same task again and again (repeatedly)
+
+Types of Loop :
+-----------------------
+for loop  ==>entry control loop. It will check the condition if condition is true then only it will print the statement.
+while loop
+do while loop
+foreach loop
+
+Syntax for forloop :
+================
+
+for( intialization;condition;increment/decrement)
+{
+statement;
+}
+
+ Example : 
+=========
+for (int i=1;i<=5;i++)
+{
+Console.WriteLine(i);
+
+}
+workflow of loop:
+---------------------------
+
+ i  value		condition 	statement	increment 
+=======			========	==========	=========
+
+i=1			 1<=5 true 	   1		 1++  ==> 2
+i=2			 2<=5 true	   2		 2++ ==> 3
+i=3 			 3<=5 true	   3		 3++ ==>4
+i=4			 4<=5 true	   4 		 4++ ==> 5
+i=5 			5<=5 trueb         5		 5++ ==> 6
+i=6			6<=5  false 	comes out from the loop.
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+Syntax for while loop:
+====================	
+
+initialization;
+while(condition)
+{
+statement;
+increment/decrement;
+}
+Exampe for  while loop:
+=====================
+int i = 90;
+            while (i >= 80)
+            {
+                Console.WriteLine(i);
+                i--;
+            }
+
+
+while and for loop  is called as entry control loop .
+
+do-while loop is called as  exit control loop . First it will print the statement and go for the condition checking.
+
+
+synatax for do-while  loop :
+=======================
+
+initialization;
+
+do 
+{
+ statement;
+incrementation/decrement;
+}while(condition);
+
+
+example for do-while loop:
+==========================
+
+do-while loop atleast will give one output if condition is not satisfied as well. 
+
+int i;
+            i = 10;
+            do
+            {
+                Console.WriteLine(i);
+                i++;
+            } while (i >= 22);
+
+====================================================================
+Nested for loop : 
+-------------------------- 
+            for (int i = 1; i <=3; i++)
+            {
+                for (int j = 1; j <= i; j++)
+                {
+                    Console.Write(j); 
+                }
+                Console.WriteLine();
+                
+            }
+
+Workflow of the above Code :
+-------------------------------------------------
+
+i value	i condition	j value	j condition	output	  	j ++		i++
+-------  -----	         -------------		----------	-----------------	----------		------		-----
+i=1	1<=3 T		j=1	 1<=1  ==> T	1		1++ = 2
+			j=2	 2<=1 ==> F					1++= 2
+i=2	2<=3 T		j=1	 1<=2 ==> T	1		1++=2
+			j=2	 2<=2 ==> T 	2		2++ =3
+			j=3	 3<=2 ==> F					2++ =3
+i=3	3<=3 T		j=1	 1<=3 ==>T	1		1++=2
+			j=2	2<=3==> T	2		2++ =3
+			j=3	3<=3 ==> T	3		3++=4
+			j=4	4<=3 ==>F					3++=4
+i=4	4<=3 ==>F 
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Array : 
+---------- 
+Array is a  collection of  item or element stored in  a single name with same datatype in a sequential order.
+
+syntax for declaring an Array : 
+-------------------------------------------
+datatype [] arrayname = new dataytype [size of an array];
+
+       int[] myarray = new int[5];
+
+Above example we can store 5 integer values  in the name of myarray.
+
+myarray[0]=345;
+myarray[1]=34;2:07 PM 2/23/2020
+myarray[2]=35;
+myarray[3]=65;
+myarray[4]=5;
+
+Console.WriteLine(" Array Elements are ");
+            for (int i = 0; i <=4; i++)
+            {
+                Console.WriteLine(myarray[i]);
+            }
+            Console.ReadLine();
+=====================================================================================
+Example for an array and getting the values at runtime and print the entered elements :
+------------------------------------------------------------------------------------------------------------------------------------------
+
+static void Main(string[] args)
+        {
+            int[] myarray = new int[5];
+		
+	Console.WriteLine("Enter 5 integer values");
+            //to get the value for an array at runtime
+                for (int i = 0; i <=4; i++)
+                {
+                    myarray[i]=Convert.ToInt32(Console.ReadLine());
+                    
+                }
+            //to print the array elements
+Console.WriteLine(" Array Elements are ");
+            for (int i = 0; i <=4; i++)
+            {
+                Console.WriteLine(myarray[i]);
+            }
+            Console.ReadLine();
+
+        }
+
+===============================================================================================
+Example for finding the biggest number in an Array:
+-----------------------------------------------------------------------------------
+ static void Main(string[] args)
+        {
+            int[] myarray = new int[5];
+            Console.WriteLine("enter 5 integer values ");
+            for (int i = 0; i <5; i++)
+            {
+                myarray[i] = Convert.ToInt32(Console.ReadLine());
+                
+            }
+            Console.WriteLine(" Array Elements are ");
+            for (int i = 0; i <=4; i++)
+            {
+                Console.WriteLine(myarray[i]);
+            }
+
+            int temp = 0;
+            for (int i = 0; i < 5; i++)
+            {
+                if (temp <= myarray[i])
+                {
+                    temp = myarray[i];
+                }
+
+            }
+            Console.WriteLine(" Biggest Number of an Array " + temp);
+
+            Console.ReadLine();
+
+        }
+
+===============================================================================================
+
+Length and reverse in Array :
+-------------------------------------------
+ static void Main(string[] args)
+        {
+            int[] myarray = new int[5];
+            Console.WriteLine("enter 5 integer values ");
+            for (int i = 0; i <5; i++)
+            {
+                myarray[i] = Convert.ToInt32(Console.ReadLine());
+                
+            }
+            Console.WriteLine(" Array Elements are ");
+            for (int i = 0; i <=4; i++)
+            {
+                Console.WriteLine(myarray[i]);
+            }
+
+            Console.WriteLine(" Length (or) size of an Array " + myarray.Length);
+            Array.Reverse(myarray);
+
+            Console.WriteLine("After reversing  Array Elements are ");
+            for (int i = 0; i <= 4; i++)
+            {
+                Console.WriteLine(myarray[i]);
+            }
+            Console.ReadLine();
+
+        }
+======================================================================================
+Example for string Array :
+--------------------------------------
+static void Main(string[] args)
+        {
+            string [] myarray = new string [5];
+            Console.WriteLine("enter 5 Names  ");
+            for (int i = 0; i <5; i++)
+            {
+                myarray[i] = Console.ReadLine();
+                
+            }
+            Console.WriteLine(" Array Elements are ");
+            for (int i = 0; i <=4; i++)
+            {
+                Console.WriteLine(myarray[i]);
+            }
+
+            Console.WriteLine(" Length (or) size of an Array " + myarray.Length);
+            Array.Reverse(myarray);
+
+            Console.WriteLine("After reversing  Array Elements are ");
+            for (int i = 0; i <= 4; i++)
+            {
+                Console.WriteLine(myarray[i]);
+            }
+            Console.ReadLine();
+
+        }
+=============================================================================================
+Example for two dimensional Array :
+-------------------------------------------------------
+ static void Main(string[] args)
+        {
+            int[,] myarray = new int[2, 3];
+            // 2 ==> row size
+            //3 ==> column size
+             // Each row contains 3  columns totally here we are having 2rows and 3  columns 2*3 =6
+            //now we have to enter 6 values for this array.
+
+            Console.WriteLine("Enter 6 integer values");
+            //outer loop for rows
+            for (int i = 0; i < 2; i++)
+            {
+                //inner loop for columns
+                for (int j = 0; j < 3; j++)
+                {
+                    myarray[i,j]=Convert.ToInt32(Console.ReadLine());
+                }
+                
+            }
+
+            Console.WriteLine(" Array elements are ");
+            for (int i = 0; i < 2; i++)
+            {
+                for (int j =0; j < 3; j++)
+                {
+                    Console.Write(myarray[i, j] + " ");
+                                   
+                }
+                Console.WriteLine();
+
+            }
+
+
+==========================================================================================
+To assign column size dynamically for an Array:
+----------------------------------------------------------------------------------------
+
+            int colsize=4;
+            Console.WriteLine(" Enter the columns size");
+            colsize=Convert.ToInt32(Console.ReadLine());
+            int[,] myarray = new int[2,colsize ];
+            //take a input from user
+            Console.WriteLine("enter 6 integer values ");
+            for (int i = 0; i <=1; i++)
+            {
+                for (int j = 0; j <colsize ; j++)
+                {
+                    myarray[i, j] = Convert.ToInt32(Console.ReadLine());
+                }  
+            }
+            //print the values from Array           
+            Console.WriteLine(" Array Elements are \n");
+           for (int i = 0; i <=1; i++)
+            {
+                for (int j = 0; j <colsize ; j++)
+                {
+                    Console.Write(myarray[i, j] + "     ");
+                }
+                Console.WriteLine();
+            }
+             
+            Console.ReadLine();
+        }
+====================================================================================
+ 
+Jagged Arrays (array-of-arrays)
+ 
+A jagged array is an array whose elements are arrays. The elements of a jagged array can be of different dimensions and sizes. A jagged array is sometimes called an "array of arrays."
+ 
+A special type of array is introduced in C#. A Jagged Array is an array of an array in which the length of each array index can differ.
+ 
+Example:
+ 
+
+int[][] jagArray = new int[5][];
+ 
+In the above declaration the rows are fixed in size. But columns are not specified as they can vary.
+ 
+Declaring and initializing jagged array.
+ 
+int[][] jaggedArray = new int[5][];
+ 
+jaggedArray[0] = new int[3];
+jaggedArray[1] = new int[5];
+jaggedArray[2] = new int[2];
+jaggedArray[3] = new int[8];
+jaggedArray[4] = new int[10];
+ 
+jaggedArray[0] = new int[] { 3, 5, 7, };
+jaggedArray[1] = new int[] { 1, 0, 2, 4, 6 };
+jaggedArray[2] = new int[] { 1, 6 };
+jaggedArray[3] = new int[] { 1, 0, 2, 4, 6, 45, 67, 78 };
+jaggedArray[4] = new int[] { 1, 0, 2, 4, 6, 34, 54, 67, 87, 78 };
+ 
+You can also initialize the array upon declaration like this:
+ 
+int[][] jaggedArray = new int[][]
+{
+new int[] { 3, 5, 7 },
+new int[] { 1, 0, 2, 4, 6 },
+new int[] { 1, 6 },
+new int[] { 1, 0, 2, 4, 6, 45, 67, 78 }
+};
+ 
+You can use the following shorthand form:
+ 
+int[][] jaggedArray =
+{
+new int[] { 3, 5, 7, },
+new int[] { 1, 0, 2, 4, 6 },
+new int[] {1, 2, 3, 4, 5, 6, 7, 8},
+new int[] {4, 5, 6, 7, 8}
+};
+ 
+Note: Notice that you cannot omit the new operator from the elements initialization because there is no default initialization for the elements.
+
+real life example
+ 
+You can consider jagged array as a movie ticket counter where ticket selling counters are fixed (rows are fixed) but you don't know how many people will be standing in each counter in a queue (column numbers are not fixed can vary on different rows).
+ 
+A jagged array is an array of arrays, and therefore its elements are reference types and are initialized to null.
+ 
+It is possible to mix jagged and multidimensional arrays. The following is a declaration and initialization of a single-dimensional jagged array that contains two-dimensional array elements of different sizes:
+ 
+int[][,] jaggedArray = new int[4][,]
+{
+new int[,] { {11,23}, {58,78} },
+new int[,] { {50,62}, {45,65}, {85,15} },
+new int[,] { {245,365}, {385,135} },
+new int[,] { {1,2}, {4,4}, {4,5} }
+};
+ 
+Practical Demonstration for Jagged Array:
+---------------------------------------------------------------------
+namespace jagged_array
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Declare the array of four elements:
+            int[][] jaggedArray = new int[4][];
+ 
+            // Initialize the elements:
+            jaggedArray[0] = new int[2] { 7, 9 };
+            jaggedArray[1] = new int[4] { 12, 42, 26, 38 };
+            jaggedArray[2] = new int[6] { 3, 5, 7, 9, 11, 13 };
+            jaggedArray[3] = new int[3] { 4, 6, 8 };
+ 
+            // Display the array elements:
+            for (int i = 0; i < jaggedArray.Length; i++)
+            {
+                System.Console.Write("Element({0}): ", i + 1);
+ 
+                for (int j = 0; j < jaggedArray[i].Length; j++)
+                {
+                    System.Console.Write(jaggedArray[i][j] + "\t");
+                }
+                System.Console.WriteLine();
+            }
+            Console.ReadLine();
+        }
+    }
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Practical demonstration of jagged array of string
+ 
+using System;
+ 
+namespace jagged_array
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[][] Members = new string[4][]{
+               new string[]{"Rocky", "Sam", "Alex"},
+               new string[]{"Peter", "Sonia", "Prety", "Ronnie", "Dino"},
+            new string[]{"Yomi", "John", "Sandra", "Alex", "Tim", "Shaun"},
+            new string[]{"Teena", "Mathew", "Arnold", "Stallone", "Goddy", "Samson", "Linda"},
+                };
+ 
+            for (int i = 0; i < Members.Length; i++)
+            {
+                System.Console.Write("Name List ({0}): ", i + 1);
+ 
+                for (int j = 0; j < Members[i].Length; j++)
+                {
+                    System.Console.Write(Members[i][j] + "\t");
+                }
+                System.Console.WriteLine();
+            }
+            Console.ReadKey();
+        }
+    }
+}
+================================================================================
+Structure  in C#.
+============
+a structure is a value type . It helps you to make a single variable hold related data of various data types. 
+
+The struct keyword is used for creating a structure
+
+Program for create a structure and accessing structure:
+===========================================
+struct Books
+{
+   public string title;
+   public string author;
+   public string subject;
+   public int book_id;
+};  
+
+public class Program
+{
+   public static void Main(string[] args)
+   {
+
+      Books Book1;        /* Declare Book1 of type Book */
+      Books Book2;        /* Declare Book2 of type Book */
+
+      /* book 1 specification */
+      Book1.title = "C Programming";
+      Book1.author = "Gem"; 
+      Book1.subject = "C Programming Tutorial";
+      Book1.book_id = 6495407;
+
+      /* book 2 specification */
+      Book2.title = "Telecom Billing";
+      Book2.author = "Zara Ali";
+      Book2.subject =  "Telecom Billing Tutorial";
+      Book2.book_id = 6495700;
+
+      /* print Book1 info */
+      Console.WriteLine( "Book 1 title : {0}", Book1.title);
+      Console.WriteLine("Book 1 author : {0}", Book1.author);
+      Console.WriteLine("Book 1 subject : {0}", Book1.subject);
+      Console.WriteLine("Book 1 book_id :{0}", Book1.book_id);
+
+      /* print Book2 info */
+      Console.WriteLine("Book 2 title : {0}", Book2.title);
+      Console.WriteLine("Book 2 author : {0}", Book2.author);
+      Console.WriteLine("Book 2 subject : {0}", Book2.subject);
+      Console.WriteLine("Book 2 book_id : {0}", Book2.book_id);       
+
+      Console.ReadKey();
+
+   }
+}
+=======================================================================
+Another Example for structure:
+--------------------------------------------------
+struct Books
+{
+   private string title;
+   private string author;
+   private string subject;
+   private int book_id;
+   public void getValues(string t, string a, string s, int id)
+   {
+      title = t;
+      author = a;
+      subject = s;
+      book_id = id;
+   }
+   public void display()
+   {
+      Console.WriteLine("Title : {0}", title);
+      Console.WriteLine("Author : {0}", author);
+      Console.WriteLine("Subject : {0}", subject);
+      Console.WriteLine("Book_id :{0}", book_id);
+   }
+
+};  
+
+public class testStructure
+{
+   public static void Main(string[] args)
+   {
+
+      Books Book1 = new Books(); /* Declare Book1 of type Book */
+      Books Book2 = new Books(); /* Declare Book2 of type Book */
+
+      /* book 1 specification */
+      Book1.getValues("C# Programming",
+      "Geetha", "C# Tutorial",123456);
+
+      /* book 2 specification */
+      Book2.getValues("Jquery",
+      "Gem", "Jquery Tutorial", 98765);
+
+      /* print Book1 info */
+      Book1.display();
+
+      /* print Book2 info */
+      Book2.display(); 
+
+      Console.ReadKey();
+
+   }
+}
+=============================================================================
+
+functions in C#.net
+--------------------
+
+syntax to declare the function:
+access_specifier returntype functionname (parameters optional)
+{
+statement;
+calculation;
+}
+
+==================================================================================================
+//Dynamic keyword
+------------------
+In c# 4.0, the new dynamic type has been introduced to bypass the type checking at compile-time instead, it will resolve the type at runtime. In c#, the dynamic type is same as implicitly typed local variable var but the only difference is the type checking will happen at runtime.
+
+ 
+
+The dynamic type variables can be defined by using a dynamic keyword like as shown below.
+
+ 
+
+dynamic x = 50;
+
+dynamic y = 10.25;
+
+In the above declarations, we used a dynamic keyword to define the dynamic variables. In most cases, the compiler will compile the variables of dynamic type into the variables of object type but those are not resolved by the compiler during compile-time instead, those will be evaluated at run time.
+
+ 
+
+During compile time, the above dynamic declarations will be compiled into object types like as shown below.
+
+ 
+
+object x = 50;
+
+object y = 10.25;
+
+//sample Program
+class Program
+    {
+       static  void Main(string[] args)
+        {
+            dynamic x;
+            x ="Hello";
+            Console.WriteLine($" x value = {x} , x Type = {x.GetType()}");
+            x = 34546;
+            Console.WriteLine($" x= {x}, x Type = {x.GetType()}");
+            x = false;
+            Console.WriteLine($" x= {x} , x Type = {x.GetType()} ");
+            x = 34546456574474;
+            Console.WriteLine($" x= {x} , x Type = {x.GetType()}");
+            x = 345.46;
+            Console.WriteLine($" x= {x} , x Type = {x.GetType()}");
+            x ='s';
+            Console.WriteLine($" x= {x} , x Type = {x.GetType()}");
+            Console.ReadLine();
+        }
+
+===================================================================================================
+//Nullable Type:
+-----------------
+ static void Main(string[] args)
+        {
+          //Nullable<int>  x=null;
+            //(or)
+            int? x = null;
+            Console.WriteLine($"x= {x}");
+            x = 9078;
+            Console.WriteLine($"x= {x}");
+            Console.ReadLine();
+        }
+===================================================================================================
+
+constant variable :
+-----------------------
+In c#, const is a keyword which is used to declare a constant fields in our applications. Generally, in c# the constant field values are set at compile time and those values never be changed.
+
+
+In c#, if we use const keyword to declare constant field, then that field value cannot be changed throughout the application so we should not use const keyword with the fields whose value will be changed at any time.
+
+ static void Main(string[] args)
+        {
+            const double pi = 3.14;
+            Console.WriteLine($"x= {pi}");
+            pi = 7646; //  compiler Error
+
+            Console.ReadLine();
+        }
+
+C# Constant Features:
+---------------------
+Following are the important features of constant variable in c# programming language. 
+
+Constant fields in c# can be created by using const keyword.
+In c#, the constant fields must be initialized during the time of declaration.
+Constant field values will be evaluated during the compile time in c#.
+Once values assigned to a constant fields, then those values must be a same throughout the application.
+
+=======================================================================================================
+//Readonly variable:
+--------------------
+class Program
+    {
+        readonly double pi = 3.14;
+        public Program()
+        {
+            pi = 9.343;
+        }
+        static void Main(string[] args)
+        {
+	    readonly double pi = 3.14;//compiler Error  ==> readonly variable has to declare outside of 				     //the function.
+            Program p = new Program();
+            Console.WriteLine($"x= {p.pi}"); 
+            Console.ReadLine();
+        }
+    }
+
+
+In c#, readonly is a keyword which is used to define a read only fields in our applications.  The read only field values needs to be initialized either at the declaration or in a constructor of the same class unlike constant keyword in c#. If we use readonly keyword with fields, then those field values will be evaluated at the runtime.
+
+C# ReadOnly Property Features
+Following are the important features of read only variable in c# programming language. 
+
+Read only fields in c# can be created by using readonly keyword.
+In c#, the readonly fields can be initialized either at the declaration or in a constructor.
+The readonly field values will be evaluated during the run time in c#.
+Once values assigned to a read only fields, then those values must be a same throughout the application.
+C# Difference between Constant and ReadOnly
+Following are the difference between constant and readonly properties in c# programming language. 
+
+In c#, the constant fields can be created by using const keyword and read only fields can be created by using readonly keyword.
+In c#, the constant fields can only be initialized during the time of declaration but read only fields can be initialized either at the declaration or in a constructor.
+Constant field values will be evaluated during the compile time but read only fields values will be evaluated at run time in c#.
+This is how we can create and use read only fields in our c# programming language with readonly keyword based on our requirements. 
+============================================================================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Demo1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int totalstudents;
+            Console.WriteLine(" Enter the No.of students");
+            totalstudents = int.Parse(Console.ReadLine());
+            string[] studentName = new string[totalstudents];
+            int[,] marks = new int[totalstudents, 6];
+            
+            for (int i = 0; i < totalstudents; i++)
+            {
+                Console.WriteLine("Enter the Name of the Student");
+                studentName[i] = Console.ReadLine();
+                Console.WriteLine(" Enter the student id and followed by 5 subject Marks");
+                for (int j = 0; j < 6; j++)
+                {
+                    marks[i, j] = int.Parse(Console.ReadLine());
+                }
+            }
+            Console.WriteLine(" \n Student Report \n -------------------------" );
+            for (int i = 0; i < totalstudents; i++)
+            {
+                Console.WriteLine($"Name = {studentName[i]}");
+                int sum = 0;
+                int average=0;
+                int count = 0;
+                 for (int j = 0; j < 6; j++)
+                {
+                   if(j==0)
+                    {
+                        Console.WriteLine($"Id ={marks[i,j]}" );
+                    }
+                   else
+                    {
+                        sum += marks[i, j];
+                        if(marks[i,j]>=60)
+                        {
+                            count++;
+                        }                                                
+                    }                    
+                }
+                average = sum / 5;
+                Console.WriteLine($"Sum = {sum} \n Average ={average}");
+                if (count == 5)
+                {                    
+                    Console.WriteLine( "Result=pass ");
+                    if (average >= 90 && average <= 100)
+                    {
+                        Console.WriteLine("grade = A+");
+                    }
+                    else if (average >= 80 && average < 90)
+                    {
+                        Console.WriteLine("grade = A");
+
+                    }
+                    else if (average >= 70 && average < 80)
+                    {
+                        Console.WriteLine("grade = B+");
+
+                    }
+                    else if (average > 60 && average < 70)
+                    {
+                        Console.WriteLine("grade = B");
+
+                    }
+                    else
+                    {
+                        
+                     Console.WriteLine(" No Grade");
+                    }
+                }
+                else
+                {
+                   Console.WriteLine(" Result = Fail");
+                }
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
+=================================================================================================
