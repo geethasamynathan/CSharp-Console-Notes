@@ -87,6 +87,35 @@ Generic Class:
         }
     }
 }
+===============================================================================================================
+can we inherit fgeneric method:
+------------------------------------
+
+Yes .we can it depends n access specifiers we can access the methods in derived class
+ public class Generic_Method_Demo
+ {
+     public static void Swap<T>(ref T x, ref T y)
+     {
+         T temp;
+         temp = x;
+         x = y;
+         y = temp;
+     }
+     public static void Gmethod<T1,T2>(T1 x, T2 y)
+     {
+         Console.WriteLine(" Mytype1 = " + x);
+         Console.WriteLine(" Mytype2 = " + y);
+     }
+
+ }
+ public class Generic_Method_Derived : Generic_Method_Demo
+ {
+     public void Sample()
+     {
+         Console.WriteLine("Sample from Derived");
+     }
+ }
+================================================================================
 
 Generic Delegtes:
 ==============
