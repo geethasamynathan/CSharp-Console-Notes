@@ -47,7 +47,714 @@ Hashtable
 The System.Collections.Concurrent namespace provides classes for thread-safe operations. Now multiple threads will not create problem for accessing the collection items.
 
 The System.Collections.Concurrent namespace has following classes:
+ArrayList,SortedList, Queue, Stack and Hashtable. These types of collections can store any type of items.
 
+The limitation of these collections is that while retrieving items, you need to cast into the appropriate data type, otherwise the program will throw a runtime exception. It also affects on performance, because of boxing and unboxing.
+
+To overcome this problem, C# includes generic collection classes in the System.Collections.Generic namespace.
+
+ArrayList:
+========
+It represents ordered collection of an object that can be indexed individually.
+
+It is basically an alternative to an array. However unlike array you can add and remove items from a list at a specified position using an index and the array resizes itself automatically. It also allows dynamic memory allocation, add, search and sort items in the list.
+
+syntax: 
+=====
+
+ //Add()
+
+static void Main(string[] args)
+        {
+            ArrayList al = new ArrayList();
+            al.Add("Golden");
+            al.Add("nikunj");
+            al.Add(1);
+            foreach (var item in al)
+            {
+                Console.WriteLine(item);
+                
+            }
+            Console.ReadLine();
+        }
+
+---------------------------------------------------------------------------------------------
+    //Insert()
+============
+               ArrayList al = new ArrayList();
+
+            al.Add("Golden");
+            al.Add("nikunj");
+            al.Add(1);
+//to add the object in between the Golden and Nikunj .We can use the Method insert .
+Ex:
+
+            al.Insert(1, "harsh");
+
+            foreach (var item in al)
+            {
+                Console.WriteLine(item);
+                
+            }
+=======================================
+//AddRange()
+===========
+ static void Main(string[] args)
+        {
+            ArrayList al = new ArrayList();
+            al.Add("Golden");
+            al.Add("nikunj");
+            al.Insert(1, "harsh");
+            Console.WriteLine(" Array List 1");
+            foreach (var item in al)
+            {
+                Console.WriteLine(item);
+                
+            }
+            ArrayList al2 = new ArrayList();
+            al2.Add("A");
+            al2.Add("Z");
+            Console.WriteLine(" Array List 2");
+            foreach (var item in al2)
+            {
+                Console.WriteLine(item);
+
+            }
+            al2.AddRange(al);
+            Console.WriteLine("\n\n After AddRange() Array List 2");
+            foreach (var item in al2)
+            {
+                Console.WriteLine(item);
+
+            }
+            Console.ReadLine();
+        }
+=========================================================
+        //InsertRange()
+================
+ static void Main(string[] args)
+        {
+            ArrayList al = new ArrayList();
+            al.Add("Golden");
+            al.Add("nikunj");
+            al.Insert(1, "harsh");
+            Console.WriteLine(" Array List 1");
+            foreach (var item in al)
+            {
+                Console.WriteLine(item);
+                
+            }
+            ArrayList al2 = new ArrayList();
+            al2.Add("A");
+            al2.Add("C");
+            al2.Add("Z");
+            Console.WriteLine(" Array List 2");
+            foreach (var item in al2)
+            {
+                Console.WriteLine(item);
+
+            }
+            al2.InsertRange(1,al);
+            Console.WriteLine("\n\n After AddRange() Array List 2");
+            foreach (var item in al2)
+            {
+                Console.WriteLine(item);
+
+            }
+            Console.ReadLine();
+        }
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+               //GetRange   
+ static void Main(string[] args)
+        {
+            ArrayList al = new ArrayList();
+            al.Add("Golden");
+            al.Add("nikunj");
+            al.Insert(1, "harsh");
+            Console.WriteLine(" Array List 1");
+            foreach (var item in al)
+            {
+                Console.WriteLine(item);
+                
+            }
+            ArrayList al2 = new ArrayList();
+            al2.Add("A");
+            al2.Add("C");
+            al2.Add("Z");
+            Console.WriteLine(" Array List 2");
+            foreach (var item in al2)
+            {
+                Console.WriteLine(item);
+
+            }
+            al2.InsertRange(1,al);
+            Console.WriteLine("\n\n After AddRange() Array List 2");
+            foreach (var item in al2)
+            {
+                Console.WriteLine(item);
+
+            }
+            ArrayList al3 = al2.GetRange(3, 2);
+            Console.WriteLine("\n\n GetRange() Array List 3");
+            foreach (var item in al3)
+            {
+                Console.WriteLine(item);
+
+            }
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    
+                ArrayList al1 = al.GetRange(0, 3);
+               Console.WriteLine(" \n\n --- GetRange () ---");
+               Console.WriteLine(" Elements present in AL1");
+                foreach (var item in al1)
+                {
+                    Console.WriteLine(item);
+
+                }      
+
+                ArrayList al2 = new ArrayList();
+                al2.Add("hi");
+                al2.Add("hello");
+            //AddRange()
+                Stack ostack = new Stack();
+                ostack.Push(1);
+                ostack.Push(2);
+                ostack.Push(3);
+                ostack.Push(4);
+                al2.AddRange(ostack);
+                Console.WriteLine("\n\n---AddRange()---\n");
+                Console.WriteLine("After using AddRange() from ostack :");
+                foreach (var item in al2)
+                {
+                    Console.Write("   " + item);
+                }
+
+            //InsertRange()
+                al2.InsertRange(0, ostack);
+                Console.WriteLine("\n\n ----InsertRange() ---");
+                Console.WriteLine("After using InsertRange() from ostack 0th index  :");
+                foreach (var item in al2)
+                {
+                    Console.Write("   " + item);
+                }
+            //Remove()
+
+                Console.WriteLine("\n\n ---Remove()---");
+                Console.WriteLine("After using Remove() :");
+                al2.Remove("hello");
+                foreach (var item in al2)
+                {
+                    Console.Write("   " + item);
+                }
+          al2.Reverse();
+            Console.WriteLine("\n\n After Reverse() Array List 2");
+            foreach (var item in al2)
+            {
+                Console.WriteLine(item);
+
+            }
+            Console.WriteLine("No.of objects present al2 "+al2.Count );
+            al2.RemoveRange(2, 3);
+            Console.WriteLine("\n\n After RemoveRange(2,3) Array List 2");
+            foreach (var item in al2)
+            {
+                Console.WriteLine(item);
+
+            }
+            Console.ReadLine();
+        }
+            //Contains()
+                Console.WriteLine("\n\n --- Contains()---");
+                Console.WriteLine("Enter the string to search in the ArrayList");
+                string ch = Console.ReadLine();
+               if(al2.Contains(ch))
+               {
+                   Console.WriteLine(" Given string is Available" );
+               }
+               else
+               {
+                   Console.WriteLine(" Given string is Not Available");
+               }
+
+=======================================================================
+            //GetEnumerator()
+               ArrayList al3 = new ArrayList();
+               al3.Add("B");
+               al3.Add("Z");
+               al3.Add("X");
+               IEnumerator objEnum = al3.GetEnumerator();
+               while (objEnum.MoveNext() )
+               {
+                   Console.WriteLine(objEnum.Current);
+               }
+               Environment.Exit(0);
+            //Count
+               Console.WriteLine(" \n\n --- Count ---");
+           Console.WriteLine(" Total No.of Item present in Al3 : " + al3.Count );
+           
+            //BinarySearch
+
+           List<string> l = new List<string>();
+           l.Add("hi");
+           l.Add("hello");
+           l.Add("color");
+           l.Add("Paint");
+           Console.WriteLine("\n\n --- BinarySearch()---");
+           int x = l.BinarySearch("color");
+           Console.WriteLine("The Result of al2.BinarySearch(3)"+x);
+          /* al3.Capacity = 3;
+           al3.Add("hi");
+           foreach (var item in al3)
+           {
+               Console.Write("   " + item);
+               
+           }
+           * */
+
+==============================================
+Hash Table
+==========
+It uses a key to access the elements in the collection.
+
+A hash table is used when you need to access elements by using key, and you can identify a useful key value. Each item in the hash table has a key/value pair. The key is used to access the items in the collection.
+
+//--Hashtabe Demonstration
+            Hashtable hs = new Hashtable();
+            hs.Add("F1", "Apple");
+            hs.Add("F2", "Orange");
+            hs.Add("F4", "Mosambi");
+            hs.Add("F3", "Pomegranate");
+            hs["F7"] = "Jackfruit";
+            hs["F5"] = "Pineapple";
+            hs["F6"] = "Amla";
+            Console.WriteLine("The First Fruit: {0}", hs["F1"]);
+            Console.WriteLine("The Last Fruit: {0}", hs["F6"].ToString());
+            Console.WriteLine("Total no.of items in hs " + hs.Count);
+            hs.Add(10, "Grapes");
+            Console.WriteLine("Total no.of items in hs " + hs.Count);
+            Console.WriteLine("The Last Fruit: {0}", hs[10].ToString());
+            Console.WriteLine(" Amla is available or not in hs " + hs.Contains("F6"));
+            Console.WriteLine("Key F5 " + hs.ContainsKey("F5"));
+            Console.WriteLine();
+            Console.WriteLine("\n After Remove two item from hashTable");
+            hs.Remove("F5");
+            hs.Remove("F3");
+            Console.WriteLine("Total no.of items in hs " + hs.Count);
+            hs.Add("F5", "xxx");
+            Console.WriteLine("Total no.of items in hs " + hs.Count);
+
+
+
+            //Copying Keys from HashTable to an Array :
+            Console.WriteLine(" Copying Keys from HashTable to an Array ");
+            object[] h2 = new object[10];
+            hs.Keys.CopyTo(h2, 1);
+            Console.WriteLine(" Array Elements are");
+            foreach (var item in h2)
+            {
+                Console.WriteLine(item);
+            }
+            //Copying values from HashTable to an Array :
+            Console.WriteLine(" \n\n\n Copying values from HashTable to an Array ");
+            string[] A3 = new string[10];
+            hs.Values.CopyTo(A3, 0);
+            Console.WriteLine(" Array Elements are in A3");
+            foreach (var item in A3)
+            {
+                Console.WriteLine(item);
+            }
+            // to display the Keys and Values 
+
+            Console.WriteLine(" \n\n \n Keys      Values    ");
+            Console.WriteLine(" -----------------------------");
+            foreach (DictionaryEntry item in hs)
+            {
+                Console.WriteLine("  {0}       {1} ", item.Key, item.Value);
+            }
+
+            //to remove all values from the hashtable :
+            //Clear () 
+            Console.WriteLine(" Total no.of items in hs  Before clear " + hs.Count);
+            hs.Clear();
+            Console.WriteLine(" Total no.of items in hs  after clear " + hs.Count);
+            
+           
+            Console.ReadKey();
+        }
+===================================================================
+Stack:
+======
+It represents a last-in, first out collection of object.
+
+It is used when you need a last-in, first-out access of items. When you add an item in the list, it is called pushing the item and when you remove it, it is called popping the item.
+static void Main()
+        {
+            //--Stack Demonstration
+            Stack st = new Stack();
+             //push adds an element to the stack at the front that is top
+             st.Push("Pune");
+             st.Push("Mumbai");
+             st.Push("Chennai");
+             st.Push("Bangalore");
+             st.Push("Hydrabad");
+             Console.WriteLine("The Stack Elements : \n");
+             foreach (string tmp in st)
+                 Console.WriteLine(tmp.ToString());
+             Console.WriteLine();
+             
+              //Pop()
+              Console.WriteLine(" ------ Element popped from top of the stack ------\n ");
+              Console.WriteLine("Popping an Item: " + st.Pop());         
+              Console.WriteLine("\nThe Stack Elements : \n");
+              foreach (string tmp in st)
+                  Console.WriteLine(tmp.ToString());
+            
+              //Peek()
+              Console.WriteLine();
+              Console.WriteLine(" ------- Element now at the Top -------\n");
+              Console.WriteLine("The top element of Stack: " + st.Peek());
+             Console.WriteLine("\nThe Stack Elements : \n");
+              foreach (string tmp in st)
+                  Console.WriteLine(tmp.ToString());
+            
+              //clear()
+              Console.WriteLine(" -----  Clear the Stack ----");
+              st.Clear();
+
+              // count
+              Console.WriteLine(" \n After clear the stack -----\n");
+              Console.WriteLine(" Count :" + st.Count);
+           
+             Console.ReadKey();
+            
+
+        }
+===========================================================================
+Queue:
+=========
+It represents a first-in, first out collection of object.
+It is used when you need a first-in, first-out access of items. 
+When you add an item in the list, it is called enqueue and 
+when you remove an item, it is called deque.
+
+static void Main()
+        { //--Queue Demonstration
+            Queue q = new Queue();
+            q.Enqueue("India");
+            q.Enqueue("USA");
+            q.Enqueue("Australia");
+            q.Enqueue("Canada");
+            q.Enqueue("France");
+            q.Enqueue("Denmark");
+
+            Console.WriteLine("Queue Elements: ");
+            foreach (string item in q)
+            {
+                Console.WriteLine(item);
+            }
+            
+            Console.WriteLine();
+            Console.WriteLine("Deletion of an item from Queue: " + q.Dequeue());
+            Console.WriteLine();
+            Console.WriteLine("Queue Elements: ");
+            foreach (string item in q)
+            {
+                Console.WriteLine(item);
+            }
+            
+            while (q.Count > 2)
+            {
+                Console.WriteLine("Removal from Queue: " + q.Dequeue());
+            }
+            Console.WriteLine();
+            Console.WriteLine("Queue Elements: ");
+            foreach (string item in q)
+            {
+                Console.WriteLine(item);
+            }
+            
+            q.Clear();
+
+            Console.ReadKey();
+        }
+==================================================================
+
+SortedList:
+=========
+It uses a key as well as an index to access the items in a list.
+
+A sorted list is a combination of an array and a hash table. It contains a list of items that can be accessed using a key or an index. If you access items using an index, it is an ArrayList, and if you access items using a key , it is a Hashtable. The collection of items is always sorted by the key value.
+
+//creation of sortedlist
+
+            SortedList<int, string> sortedlist = new SortedList<int, string>();
+
+            //add the elements in sortedlist
+
+            sortedlist.Add(1, "Sunday");
+
+            sortedlist.Add(2, "Monday");
+
+            sortedlist.Add(3, "Tuesday");
+
+            sortedlist.Add(4, "Wednesday");
+
+            sortedlist.Add(5, "Thusday");
+
+            sortedlist.Add(6, "Friday");
+
+            sortedlist.Add(7, "Saturday");
+
+            //display the elements of the sortedlist
+
+            Console.WriteLine("The elements in the SortedList are:");
+
+            foreach (KeyValuePair<int, string> pair in sortedlist)
+
+            {
+
+                Console.WriteLine("{0} => {1}", pair.Key, pair.Value);
+
+            }
+
+            Console.WriteLine("The total number of elements in the sortedlist are:" + sortedlist.Count);
+
+            sortedlist.Add(8, "januray");
+
+            sortedlist.Add(9, "april");
+
+            Console.WriteLine("After adding two more element the number of element in sortedlist are:" + sortedlist.Count);
+
+-------------------------------------------------------------------------------
+SortedList sortedList1 = new SortedList();
+sortedList1.Add(3, "Three");
+sortedList1.Add(4, "Four");
+sortedList1.Add(1, "One");
+sortedList1.Add(5, "Five");
+sortedList1.Add(2, "Two");
+
+SortedList sortedList2 = new SortedList();
+sortedList2.Add("one", 1);
+sortedList2.Add("two", 2);
+sortedList2.Add("three", 3);
+sortedList2.Add("four", 4);
+    
+SortedList sortedList3 = new SortedList();
+sortedList3.Add(1.5, 100);
+sortedList3.Add(3.5, 200);
+sortedList3.Add(2.4, 300);
+sortedList3.Add(2.3, null);
+sortedList3.Add(1.1, null);
+
+SortedList sortedList = new SortedList()
+{
+    {3, "Three"},
+    {4, "Four"},
+    {1, "One"},
+    {5, "Five"},
+    {2, "Two"}
+};
+
+
+SortedList sortedList = new SortedList();
+
+sortedList.Add(3, "Three");
+sortedList.Add("Four", "Four"); // Throw exception: InvalidOperationException
+sortedList.Add(1, "One");
+sortedList.Add(8, "Five");
+sortedList.Add(2, "Two");
+
+
+SortedList sortedList = new SortedList()
+                            {
+                                {"one", 1},
+                                {"two", 2},
+                                {"three", 3},
+                                {"four", "Four"}
+                            }
+
+int i = (int) sortedList["one"];
+int j = (int) sortedList["two"];
+string str = (string) sortedList["four"];
+
+Console.WriteLine(i);
+Console.WriteLine(j);
+Console.WriteLine(str);
+
+
+SortedList sortedList = new SortedList()
+                            {
+                                {3, "Three"},
+                                {4, "Four"},
+                                {1, "One"},
+                                {5, "Five"},
+                                {2, "Two"}
+                            };
+for (int i = 0; i < sortedList.Count; i++)
+{
+    Console.WriteLine("key: {0}, value: {1}", 
+        sortedList.GetKey(i), sortedList.GetByIndex(i));
+}
+
+
+
+
+
+SortedList sortedList = new SortedList()
+                            {
+                                {3, "Three"},
+                                {4, "Four"},
+                                {1, "One"},
+                                {5, "Five"},
+                                {2, "Two"}
+                            };
+foreach(DictionaryEntry kvp in sortedList )
+    Console.WriteLine("key: {0}, value: {1}", kvp.Key , kvp.Value );
+
+
+----------------------------------------------------------------------------------
+ static void Main()
+        {           
+           // SortedList<int,string> sl = new SortedList<int,string>();
+            SortedList sl = new SortedList();          
+    sl.Add(001, "ziavudeen"); 
+    sl.Add(002, "Abinaya"); 
+    sl.Add(003, "John"); 
+    sl.Add(004, "Arjun"); 
+    sl.Add(007, "Nithin");
+    sl.Add(006, "Fransy"); 
+    sl.Add(005, "Ritesh");
+    foreach (DictionaryEntry  item in sl)
+    {
+        Console.WriteLine(item.Key + "\t\t" +item.Value  );
+    }
+    Console.WriteLine(" Check whether ziavudeen  is in the List or not? \n\n");
+       if (sl.ContainsValue("ziavudeen")) 
+    { 
+        Console.WriteLine("This student name is already in the list");
+     } 
+        else 
+    { 
+    sl.Add(008, "ziavudeen");
+    Console.WriteLine(" ziavudeen name Added in the List");
+    }
+       Console.WriteLine(sl.Count);
+
+        if (sl.ContainsKey(008))
+        { 
+            Console.WriteLine(" Yes. Key 008 is Available in the List");
+        }
+        else
+        { 
+            Console.WriteLine(" Yes. Key 008 is  Not Available in the List");
+        }
+            
+        object  KeyAtIndex3 = sl.GetKey(3);
+        Console.WriteLine(" Key at the Index(3) = " + KeyAtIndex3);
+           
+        int myindex = sl.IndexOfKey(007);
+        Console.WriteLine(" The Index of 007 =" + myindex);
+        Console.WriteLine(" Index of vlue of  ziavudeen"+sl.IndexOfValue("ziavudeen"));
+        Console.WriteLine(" replace the value of key 003");
+        sl.SetByIndex(003, "Geetha");
+           
+        Console.WriteLine(" ---SetByIndex() ---");
+        IList mylist = sl.GetKeyList();
+      
+        foreach (DictionaryEntry item in sl  )
+        {
+            Console.WriteLine(item.Key + "        "+ item.Value );
+        }
+        Console.ReadKey();
+        }
+================================================================
+
+List:
+------
+ List<string> langs = new List<string>();
+            langs.Add("Pearl");
+            langs.Add("R ");
+            langs.Add("C#");
+            langs.Add("VB");
+            langs.Add("Java");
+            langs.Insert(2, "C++");
+            foreach (var item in langs)
+            {
+                Console.WriteLine(item);
+            }
+            langs.Remove("R ");
+            Console.WriteLine(" After removing R "+langs.Count);
+            Console.WriteLine(" Java is avaialable or not " +langs.Contains("Java"));
+----------------------------------------------------------------------------
+List<int> integerlist = new List<int>() { 34, 567, 87, 34, 67,89,87,66,83,67,35 };
+             int arraynum = 0;
+            Console.WriteLine(" List of integers are");
+            foreach (var item in integerlist)
+            {
+                if (item % 2 == 0)
+                    arraynum++;
+                Console.WriteLine(item);
+            }
+            Console.WriteLine( "Number of Even Numbers " +arraynum);
+            int min = integerlist.Min();
+            Console.WriteLine("Minimum value in the List "+ min);
+            int max = integerlist.Max();
+            Console.WriteLine( "Maximum value in the List "+max);
+            int sum =integerlist.Sum();
+            Console.WriteLine(" Sum of th Integerlist " +sum);
+            double avg =integerlist.Average();
+            Console.WriteLine( "Average  " +avg);
+            Console.WriteLine( "35 is  "+integerlist.Contains(35));
+-----------------------------------------------------------------------------------
+class Employee
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string City { get; set; }
+        public int Salary { get; set; }
+    }
+
+
+// IList<Employee> employeelist = new List<Employee>()           
+             List<Employee> employeelist = new List<Employee>()
+             { new Employee {Id=101,Name="Harish",City="Hybd",Salary=34532},
+                 new Employee {Id=102,Name="Lakshman",City="Mumbai",Salary=45555},
+                 new Employee {Id=103,Name="Preeti",City="Pawai",Salary=50000},
+                 new Employee {Id=104,Name="Karim",City="Thane",Salary=40000 }
+             };
+            Console.WriteLine(" Employee details are");
+            foreach (Employee item in employeelist)
+            {
+                Console.WriteLine(item.Id + " " + item.Name + "  " + item.City + "  " + item.Salary);
+            }
+
+-------------------------------------------------------------------------------
+Console.WriteLine( "Enter the no.of Employees" );
+            int num = int.Parse(Console.ReadLine());
+            IList<Employee> employeelist = new List<Employee>();
+            Console.WriteLine("Enter id,Name,city and salary");
+            for (int i = 0; i < num; i++)
+            {
+                employeelist.Add(
+                    new Employee()
+                    {                    
+                        Id = int.Parse(Console.ReadLine()),
+                        Name = Console.ReadLine(),
+                        City = Console.ReadLine(),
+                        Salary = int.Parse(Console.ReadLine())
+                    }
+                     ); 
+            }
+
+
+
+Console.WriteLine(" Employee details are");
+            foreach (Employee item in employeelist)
+            {
+                Console.WriteLine(item.Id + " " + item.Name + "  " + item.City + "  " + item.Salary);
+            }
+=================================================================================
 BlockingCollection
 ConcurrentBag
 ConcurrentStack
